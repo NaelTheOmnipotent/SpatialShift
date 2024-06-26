@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
@@ -50,6 +51,13 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float shiftCountDownInSeconds;
     private float shiftCountDown;
 
+    [Space(10)]
+    [SerializeField] private GameObject shiftingAnim;
+    [SerializeField] private GameObject shiftingAnim1;
+    [SerializeField] private float shiftingAnimDestruction;
+    private GameObject spawnedShiftingAnim;
+    private GameObject spawnedShiftingAnim1;
+    
     #endregion
 
     [Header("Misc")] 
@@ -259,10 +267,17 @@ public class PlayerScript : MonoBehaviour
             {
                 //Gets the Magnitude of the velocity
                 trueVelocity = rb.velocity.magnitude;
+
+                spawnedShiftingAnim = Instantiate(shiftingAnim, transform.position, quaternion.identity);
+                StartCoroutine(DestroyShiftAnim());
                 
                 //Stops Time and teleports the Player up
                 Time.timeScale = 0.0f;
                 transform.position = new Vector3(transform.position.x, transform.position.y + shiftHeight);
+
+
+                spawnedShiftingAnim1 = Instantiate(shiftingAnim1, transform.position, quaternion.identity);
+                StartCoroutine(DestroyShiftAnim1());
                 
                 //Sets some variables
                 touchedGround = false;
@@ -270,6 +285,7 @@ public class PlayerScript : MonoBehaviour
                 gameManager.playerIsTeleporting = true;
                 hasJumped = false;
                 groundedScript.isGrounded = false;
+                spriteRendererScript.isShifting = true;
 
                 //Makes it so the player can jump right after Shifting
                 coyoteTimeCounter = coyoteTime;
@@ -293,6 +309,7 @@ public class PlayerScript : MonoBehaviour
 
                 spriteRendererScript.isShiftingSideways = true;
                 gameManager.playerIsTeleporting = false;
+                
             }
             //Up-Right
             if (inputHandler.ShiftingVector() == new Vector2(1, 1) && !inputHandler.isHoldingTeleport())
@@ -375,6 +392,25 @@ public class PlayerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(jumpBuffer);
         inputHandler.jumpBuffer = false;
+    }
+
+    IEnumerator DestroyShiftAnim()
+    {
+        yield return new WaitForSecondsRealtime(shiftingAnimDestruction);
+        if (spawnedShiftingAnim != null)
+        {
+            Destroy(spawnedShiftingAnim);
+        }
+    }
+
+    IEnumerator DestroyShiftAnim1()
+    {
+        yield return new WaitForSecondsRealtime(shiftingAnimDestruction);
+        if (spawnedShiftingAnim1 != null)
+        {
+            Debug.Log(true);
+            Destroy(spawnedShiftingAnim1);
+        }
     }
 
     #endregion
