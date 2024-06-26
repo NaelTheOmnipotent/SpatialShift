@@ -5,33 +5,19 @@ using UnityEngine;
 
 public class ParallaxScript : MonoBehaviour
 {
-    private float startPos, length;
-    [SerializeField] private GameObject cam;
-    [Range(0,1)] [SerializeField] private float parallaxEffectX;
+    private Material mat;
+    private float distance;
+
+    [Range(0, 05f)] private float speed;
 
     private void Start()
     {
-        startPos = transform.position.x;
-        length = GetComponent<SpriteRenderer>().bounds.size.x;
-        Debug.Log(gameObject.name + ": " + length);
+        mat = GetComponent<Renderer>().material;
     }
 
     private void Update()
     {
-        float distance = cam.transform.position.x * parallaxEffectX;
-        float movement = cam.transform.position.x * (1 - parallaxEffectX);
-
-        transform.position = new Vector3(startPos + distance, transform.position.y, transform.position.z);
-
-        /*
-        if (movement > startPos + length)
-        {
-            startPos += length;
-        }
-        else if (movement < startPos - length)
-        {
-            startPos -= length;
-        }
-        */
+        distance += Time.deltaTime * speed;
+        mat.SetTextureOffset("MainTex", Vector2.right * distance);
     }
 }
