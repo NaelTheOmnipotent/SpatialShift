@@ -100,6 +100,8 @@ public class PlayerInteractionScript : MonoBehaviour
             if (transform.up.y != surfaceNormal.y)
             {
                 transform.localRotation = Quaternion.FromToRotation(Vector2.up, surfaceNormal);
+                
+                
                 //transform.Rotate(0,0,angle * Time.deltaTime);                                                                                         BUG
                 #region Not Working Code
                 
