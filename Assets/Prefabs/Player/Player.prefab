@@ -1381,7 +1381,7 @@ Transform:
   m_GameObject: {fileID: 3898766826603040414}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1428,7 +1428,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -7438239875258688172, guid: 2a46e798c776ee24bba4454e938c2bdd, type: 3}
+  m_Sprite: {fileID: 939732295, guid: 9aa0ec3416870f6459740e30334d87fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1436,7 +1436,7 @@ SpriteRenderer:
   m_Size: {x: 0.5, y: 1.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2894234846594582181
@@ -1459,8 +1459,8 @@ MonoBehaviour:
   isShiftingDiagonallyUp: 0
   isShiftingDiagonallyDown: 0
   isShiftingSideways: 0
+  isShifting: 0
   isJumping: 0
-  isFalling: 0
 --- !u!96 &1407892030841245894
 TrailRenderer:
   serializedVersion: 3
@@ -1575,7 +1575,7 @@ Animator:
   m_GameObject: {fileID: 3898766826603040414}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 7287722224990074306, guid: 2a46e798c776ee24bba4454e938c2bdd, type: 3}
+  m_Controller: {fileID: 9100000, guid: 058318a848ffcf3498731b5aa11a4a75, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2079,6 +2079,8 @@ MonoBehaviour:
   hasTeleported: 0
   isNotBlocked: 0
   shiftCountDownInSeconds: 1
+  shiftingAnimDestruction: 0.7
+  shiftingAnim: {fileID: 818304916740879208, guid: c048e04d3ddf6e44d84df496fec7b7da, type: 3}
   momentumWheel: {fileID: 2647747286035485595}
   spriteRendererScript: {fileID: 2894234846594582181}
   gameManager: {fileID: 0}

@@ -29,8 +29,8 @@ public class SpriteRendererScript : MonoBehaviour
     [HideInInspector] public bool isShiftingDiagonallyUp;
     [HideInInspector] public bool isShiftingDiagonallyDown;
     [HideInInspector] public bool isShiftingSideways;
+    [HideInInspector] public bool isShifting;
     [HideInInspector] public bool isJumping;
-    [HideInInspector] public bool isFalling;
     
     private bool isFacingRight = true;
 
@@ -90,6 +90,15 @@ public class SpriteRendererScript : MonoBehaviour
 
     void AnimationStuff()
     {
+        if (playerScript.hasTeleported)
+        {
+            //animator.enabled = false;
+        }
+        else
+        {
+            //animator.enabled = true;
+        }
+        
         if (inputHandler.MovementInput().x > 0 && !isFacingRight && Time.timeScale != 0)
         {
             FlipCharacter();
@@ -112,6 +121,13 @@ public class SpriteRendererScript : MonoBehaviour
         animator.SetBool("Jumping", isJumping);
         animator.SetFloat("YSpeed", playerScript.rb.velocity.y);
         animator.SetBool("Grounded", groundChecker.isGrounded);
+        
+        animator.SetBool("ShiftUp", isShiftingUp);
+        animator.SetBool("ShiftDiagonallyUp", isShiftingDiagonallyUp);
+        animator.SetBool("ShiftSideways", isShiftingSideways);
+        animator.SetBool("ShiftDiagonallyDown", isShiftingDiagonallyDown);
+        animator.SetBool("ShiftDown", isShiftingDown);
+        animator.SetBool("Shifting", isShifting);
     }
     
     private void FlipCharacter()
