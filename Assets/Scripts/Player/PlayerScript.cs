@@ -408,7 +408,6 @@ public class PlayerScript : MonoBehaviour
         yield return new WaitForSecondsRealtime(shiftingAnimDestruction);
         if (spawnedShiftingAnim1 != null)
         {
-            Debug.Log(true);
             Destroy(spawnedShiftingAnim1);
         }
     }

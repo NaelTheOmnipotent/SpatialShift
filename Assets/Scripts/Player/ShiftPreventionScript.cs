@@ -4,10 +4,12 @@ using UnityEngine;
 public class ShiftPreventionScript : MonoBehaviour
 {
     [SerializeField] List<Collider2D> colList = new();
+    private PlayerScript playerScript;
     private void Start()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y + GetComponentInParent<PlayerScript>().shiftHeight);
-        GetComponentInParent<PlayerScript>().isNotBlocked = true;
+        playerScript = GetComponentInParent<PlayerScript>();
+        transform.position = new Vector3(transform.position.x, transform.position.y + playerScript.shiftHeight);
+        playerScript.isNotBlocked = true;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -19,7 +21,7 @@ public class ShiftPreventionScript : MonoBehaviour
                 colList.Add(other);
 
             if (colList.Count > 0)
-                GetComponentInParent<PlayerScript>().isNotBlocked = false;
+                playerScript.isNotBlocked = false;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -31,7 +33,7 @@ public class ShiftPreventionScript : MonoBehaviour
                 colList.Remove(other);
 
             if (colList.Count <= 0)
-                GetComponentInParent<PlayerScript>().isNotBlocked = true;
+                playerScript.isNotBlocked = true;
         }
     }
 }

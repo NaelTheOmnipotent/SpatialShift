@@ -93,7 +93,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3570195502635420210}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: dd196a8cffaea0144bb0298322ce7ba6, type: 2}
   m_IncludeLayers:
@@ -143,5 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12530d05a8914146a1e993166015b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFeetTransform: {fileID: 0}
   canFallThrough: 0

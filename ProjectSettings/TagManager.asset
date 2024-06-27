@@ -72,3 +72,6 @@ TagManager:
   - name: Player
     uniqueID: 2272711749
     locked: 0
+  - name: TileMap
+    uniqueID: 1755351
+    locked: 0
