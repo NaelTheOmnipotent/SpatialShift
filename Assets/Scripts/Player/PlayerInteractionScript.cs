@@ -41,7 +41,7 @@ public class PlayerInteractionScript : MonoBehaviour
     [SerializeField] private float damagedTime;
     [SerializeField] private float invincibilityFlashIntervals;
     [SerializeField] private float reboundForce;
-    private bool isInvincible;
+    [HideInInspector] public bool isInvincible;
     private bool isDamaged;
     private float ySpeed;
     private float tempInvincibilityFlashIntervals;

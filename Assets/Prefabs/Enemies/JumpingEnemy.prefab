@@ -121,7 +121,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.854744, y: -2.6000667, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7987734730985879736}
@@ -168,9 +168,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c2b529e698ce5854d91cf27111529b10, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: 63285628, guid: b89af0c625c474b46b98c1a63d28e530, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHasJumped: 0
   jumpForce: 15
+  jumpingDeathAnim: {fileID: 7287916069677869135, guid: 22b9d91cbbcffa04a97a3c61a28b1d5f, type: 3}
 --- !u!50 &6887417279823265495
 Rigidbody2D:
   serializedVersion: 4
@@ -275,7 +276,7 @@ Animator:
   m_GameObject: {fileID: 6149825212364764348}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45090f7a305582b42860e60eed17f83b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

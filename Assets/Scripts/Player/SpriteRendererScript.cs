@@ -31,6 +31,7 @@ public class SpriteRendererScript : MonoBehaviour
     [HideInInspector] public bool isShiftingSideways;
     [HideInInspector] public bool isShifting;
     [HideInInspector] public bool isJumping;
+    [HideInInspector] public bool isHit;
     
     private bool isFacingRight = true;
 
@@ -128,6 +129,7 @@ public class SpriteRendererScript : MonoBehaviour
         animator.SetBool("ShiftDiagonallyDown", isShiftingDiagonallyDown);
         animator.SetBool("ShiftDown", isShiftingDown);
         animator.SetBool("Shifting", isShifting);
+        animator.SetBool("Hit", GetComponentInParent<PlayerInteractionScript>().isInvincible);
     }
     
     private void FlipCharacter()

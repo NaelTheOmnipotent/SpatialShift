@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class JumpingEnemy : MonoBehaviour
@@ -9,6 +10,8 @@ public class JumpingEnemy : MonoBehaviour
     private Animator animator;
     [HideInInspector] public bool playerHasJumped;
     [HideInInspector] public float jumpForce;
+
+    [SerializeField] private GameObject jumpingDeathAnim;
 
     private void Awake()
     {
@@ -31,6 +34,7 @@ public class JumpingEnemy : MonoBehaviour
         {
             animator.SetBool("Jumping", false);
         }
+        animator.SetFloat("YSpeed", rb.velocity.y);
     }
 
     public void FacingRight()
@@ -49,5 +53,10 @@ public class JumpingEnemy : MonoBehaviour
         currentScale.x = -Mathf.Abs(currentScale.x);
 
         transform.localScale = currentScale;
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(jumpingDeathAnim, transform.position, quaternion.identity);
     }
 }

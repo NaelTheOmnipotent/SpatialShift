@@ -1425,8 +1425,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2022255547
+  m_SortingLayer: 8
   m_SortingOrder: 10
   m_Sprite: {fileID: 939732295, guid: 9aa0ec3416870f6459740e30334d87fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1461,6 +1461,7 @@ MonoBehaviour:
   isShiftingSideways: 0
   isShifting: 0
   isJumping: 0
+  isHit: 0
 --- !u!96 &1407892030841245894
 TrailRenderer:
   serializedVersion: 3
@@ -2079,8 +2080,9 @@ MonoBehaviour:
   hasTeleported: 0
   isNotBlocked: 0
   shiftCountDownInSeconds: 1
-  shiftingAnimDestruction: 0.7
   shiftingAnim: {fileID: 818304916740879208, guid: c048e04d3ddf6e44d84df496fec7b7da, type: 3}
+  shiftingAnim1: {fileID: 3203486508455881619, guid: 55d7243c43b5e2f4d9c40a83c33f9a2f, type: 3}
+  shiftingAnimDestruction: 0.7
   momentumWheel: {fileID: 2647747286035485595}
   spriteRendererScript: {fileID: 2894234846594582181}
   gameManager: {fileID: 0}
@@ -2114,12 +2116,13 @@ MonoBehaviour:
   destructiblePlatformSpeedRequirement: 30
   isHeadingDownwards: 0
   coinCount: 0
-  invincibilityTime: 1.5
+  invincibilityTime: 1
   damagedTime: 10
   invincibilityFlashIntervals: 0.2
   reboundForce: 10
+  isInvincible: 0
   slopeJumpForce: 0.5
-  rotationSpeed: 67
+  rotationSpeed: 5
 --- !u!114 &6934590612613858447
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class HorizontalEnemyScript : MonoBehaviour
@@ -60,7 +61,16 @@ public class HorizontalEnemyScript : MonoBehaviour
     {
         if (deathAnim != null)
         {
-            Instantiate(deathAnim, transform.position, Quaternion.identity);
+            var spawnedDeathAnim = Instantiate(deathAnim, transform.position, Quaternion.identity);
+            if (transform.localScale.x > 0)
+            {
+                Debug.Log("Left");
+            }
+            else if (transform.localScale.x < 0)
+            {
+                Debug.Log("Right");
+            }
         }
     }
+    
 }
