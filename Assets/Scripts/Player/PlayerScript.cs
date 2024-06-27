@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
@@ -66,6 +67,12 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameManagerScript gameManager;
     [HideInInspector] public bool isHit;
 
+    private void Awake()
+    {
+        //Puts the Player at either the start of the level or the last Checkpoint
+        transform.position = GameManagerScript.checkPointPosition;
+    }
+
     private void Start()
     {
         //Gets the references
@@ -73,10 +80,6 @@ public class PlayerScript : MonoBehaviour
         inputHandler = GetComponent<InputHandlerScript>();
         rb = GetComponent<Rigidbody2D>();
         playerInteractionScript = GetComponent<PlayerInteractionScript>();
-        
-
-        //Puts the Player at either the start of the level or the last Checkpoint
-        transform.position = GameManagerScript.checkPointPosition;
     }
 
     private void Update()
