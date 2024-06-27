@@ -6,11 +6,15 @@ using UnityEngine;
 public class EnemyPlayerJumpDetectionScript : MonoBehaviour
 {
     private InputHandlerScript playerInput;
+    private GameObject playerGameObject;
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             playerInput = other.GetComponent<InputHandlerScript>();
+            playerGameObject = other.gameObject;
         }
     }
 
@@ -25,6 +29,18 @@ public class EnemyPlayerJumpDetectionScript : MonoBehaviour
             else
             {
                 GetComponentInParent<JumpingEnemy>().playerHasJumped = false;
+            }
+        }
+
+        if (playerGameObject != null)
+        {
+            if (playerGameObject.transform.position.x > transform.position.x)
+            {
+                GetComponentInParent<JumpingEnemy>().FacingRight();
+            }
+            else if (playerGameObject.transform.position.x < transform.position.x)
+            {
+                GetComponentInParent<JumpingEnemy>().FacingLeft();
             }
         }
     }

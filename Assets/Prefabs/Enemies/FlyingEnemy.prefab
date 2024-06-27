@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 366411114585426642}
   - component: {fileID: 3861397092719752974}
   - component: {fileID: 5410884600662556044}
-  - component: {fileID: 6913703108816479574}
+  - component: {fileID: -8388867843946593333}
   m_Layer: 9
-  m_Name: HorizontalEnemy
+  m_Name: FlyingEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,7 +186,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2.5
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -211,8 +211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  deathAnim: {fileID: 0}
-  animator: {fileID: 0}
 --- !u!61 &5410884600662556044
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -258,7 +256,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!95 &6913703108816479574
+--- !u!95 &-8388867843946593333
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

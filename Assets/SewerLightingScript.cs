@@ -46,18 +46,15 @@ public class SewerLightingScript : MonoBehaviour
         else if (globalLight.intensity < targetDarkness && isDarkening && entranceLight.intensity >= targetSpotLightIntensity)
         {
             isDarkening = false;
-            Debug.Log(false);
         }
 
         if (isDarkening && entranceLight.intensity < targetSpotLightIntensity)
         {
             entranceLight.intensity = exitLight.intensity += Time.deltaTime * spotLightLightingChangeRate;
-            Debug.Log("LightingUp");
         }
         else if (isLightingUp && entranceLight.intensity > 0)
         {
             entranceLight.intensity = exitLight.intensity -= Time.deltaTime * spotLightDarknessChangeRate;
-            Debug.Log("Darkening");
         }
 
         if (isLightingUp && globalLight.intensity < 1)
