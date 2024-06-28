@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 50978acf671e74d48b45240bd238a0e1
+guid: b0d67306cbf8e074cbc49e8299974cd4
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -53,9 +53,9 @@ ScriptedImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
     normalMap: 0
     textureFormat: 0
     maxTextureSize: 0
@@ -75,7 +75,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -87,7 +87,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638550169244930593
+  platformSettingsDirtyTick: 638551856144974085
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,7 +121,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: 1
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 4
       width: 750
       height: 500
-    spriteID: 56ccafd91f87b37488c225ff3a6f130b
+    spriteID: aee3e5949b54b124c8e199346daf4214
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -151,7 +151,7 @@ ScriptedImporter:
       y: 4
       width: 750
       height: 500
-    spriteID: 97724779c0e9be346ba20d7d73e5e9c6
+    spriteID: 357cc56fc439ffc48b5a9ea297d84ba4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -175,7 +175,7 @@ ScriptedImporter:
         y: 0
         width: 750
         height: 500
-      spriteId: 56ccafd91f87b37488c225ff3a6f130b
+      spriteId: aee3e5949b54b124c8e199346daf4214
     linkedCells: []
     parentIndex: -1
   platformSettings:
