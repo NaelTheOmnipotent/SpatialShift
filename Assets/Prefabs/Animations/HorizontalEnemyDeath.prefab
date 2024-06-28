@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8642596904518162824}
   - component: {fileID: 6315427808274066024}
   - component: {fileID: 9128312135315517313}
+  - component: {fileID: 4582866824036933300}
   m_Layer: 0
   m_Name: HorizontalEnemyDeath
   m_TagString: Untagged
@@ -106,3 +107,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4582866824036933300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4661575063972727622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4a6305177a1e84e9d6d38ea3472e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 0.5
