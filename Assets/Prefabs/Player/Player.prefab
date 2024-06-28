@@ -2117,8 +2117,8 @@ MonoBehaviour:
   destructiblePlatformSpeedRequirement: 30
   isHeadingDownwards: 0
   coinCount: 0
-  invincibilityTime: 1
-  damagedTime: 10
+  invincibilityTime: 1.2
+  damagedTime: 1
   invincibilityFlashIntervals: 0.2
   reboundForce: 10
   isInvincible: 0
@@ -2484,7 +2484,7 @@ Transform:
   m_GameObject: {fileID: 6647817184008859790}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.14999998, y: 0, z: 0}
+  m_LocalPosition: {x: -0.18, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2577,6 +2577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 398178586511199891}
   groundChecker: {fileID: 5824462655341331144}
+  cape: {fileID: 6647817184008859790}
 --- !u!1 &7043657705022830364
 GameObject:
   m_ObjectHideFlags: 0
