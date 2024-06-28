@@ -23,6 +23,8 @@ public class SpriteRendererScript : MonoBehaviour
 
     #region Animation
 
+    [SerializeField] private GameObject cape;
+    
     [HideInInspector] public bool isBraking;
     [HideInInspector] public bool isShiftingDown;
     [HideInInspector] public bool isShiftingUp;
@@ -31,7 +33,6 @@ public class SpriteRendererScript : MonoBehaviour
     [HideInInspector] public bool isShiftingSideways;
     [HideInInspector] public bool isShifting;
     [HideInInspector] public bool isJumping;
-    [HideInInspector] public bool isHit;
     
     private bool isFacingRight = true;
 
@@ -130,6 +131,15 @@ public class SpriteRendererScript : MonoBehaviour
         animator.SetBool("ShiftDown", isShiftingDown);
         animator.SetBool("Shifting", isShifting);
         animator.SetBool("Hit", GetComponentInParent<PlayerInteractionScript>().isInvincible);
+
+        if (GetComponentInParent<PlayerInteractionScript>().isInvincible)
+        {
+            cape.SetActive(false);
+        }
+        else
+        {
+            cape.SetActive(true);
+        }
     }
     
     private void FlipCharacter()

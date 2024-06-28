@@ -75,6 +75,9 @@ TagManager:
   - name: TileMap
     uniqueID: 1755351
     locked: 0
+  - name: Cape
+    uniqueID: 1195101229
+    locked: 0
   - name: Player
     uniqueID: 2272711749
     locked: 0
