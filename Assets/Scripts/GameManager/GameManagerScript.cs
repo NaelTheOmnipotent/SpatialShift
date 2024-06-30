@@ -1,5 +1,9 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using Bloom = UnityEngine.Rendering.PostProcessing.Bloom;
+using DepthOfField = UnityEngine.Rendering.PostProcessing.DepthOfField;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -26,10 +30,20 @@ public class GameManagerScript : MonoBehaviour
     [Header("Misc")]
     [HideInInspector] public bool playerIsTeleporting;
 
+
+    [Header("Global Volume")] 
+    [SerializeField] private Volume globalVolume;
+
+    private Bloom bloom;
+
     private void Awake()
     {
         canvas.SetActive(true);
         
+        if (globalVolume.profile.TryGet<VolumeComponent>(out var tmp))
+        {
+            Debug.Log(tmp.name);
+        }
     }
 
 
@@ -44,6 +58,7 @@ public class GameManagerScript : MonoBehaviour
         {
             Application.targetFrameRate = fps;
         }
+
     }
 
 
