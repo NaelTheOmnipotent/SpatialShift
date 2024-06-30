@@ -18,6 +18,7 @@ public class HUDScript : MonoBehaviour
     private void Start()
     {
         playerInteraction = playerScript.gameObject.GetComponent<PlayerInteractionScript>();
+        minutes = GameManagerScript.minutes;
     }
 
     private void Update()
@@ -46,6 +47,7 @@ public class HUDScript : MonoBehaviour
             seconds = 0;
             GameManagerScript.currentTime = 0;
             minutes += 1;
+            GameManagerScript.minutes += 1;
         }
         
         //If 100 milliseconds have passed, reset it

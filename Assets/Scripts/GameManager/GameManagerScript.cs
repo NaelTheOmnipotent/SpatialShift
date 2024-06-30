@@ -10,6 +10,7 @@ public class GameManagerScript : MonoBehaviour
     [Header("Timer")]
     public static bool timerIsRunning;
     public static float currentTime;
+    public static int minutes;
     
     [Header("Canvas")]
     [SerializeField] private GameObject canvas;
@@ -83,6 +84,7 @@ public class GameManagerScript : MonoBehaviour
 
         timerIsRunning = false;
         currentTime = 0;
+        minutes = 0;
         
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;

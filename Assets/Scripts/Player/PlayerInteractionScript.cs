@@ -152,7 +152,6 @@ public class PlayerInteractionScript : MonoBehaviour
                 
                 #endregion
             }
-            
 
             //Adds more jumpForce the faster and steeper the angle is
             if (surfaceNormal != Vector2.up && Mathf.Abs(surfaceNormal.x) * rb.velocity.magnitude * slopeJumpForce > tempJumpForce)
