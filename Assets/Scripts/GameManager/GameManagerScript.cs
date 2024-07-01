@@ -39,7 +39,7 @@ public class GameManagerScript : MonoBehaviour
     {
         canvas.SetActive(true);
 
-        globalVolume.weight = 1;
+        globalVolume.weight = 0;
     }
 
 
