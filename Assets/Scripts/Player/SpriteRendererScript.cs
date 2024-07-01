@@ -55,6 +55,8 @@ public class SpriteRendererScript : MonoBehaviour
         ApplyScale();
         
         AnimationStuff();
+        
+        ShiftingBools();
     }
 
     void CalculateScaleOnAirTime()
@@ -140,8 +142,22 @@ public class SpriteRendererScript : MonoBehaviour
         {
             cape.SetActive(true);
         }
+        
+        
     }
-    
+
+    void ShiftingBools()
+    {
+        if (groundChecker.isGrounded)
+        {
+            isShiftingDiagonallyDown = false;
+            isShiftingDown = false;
+            isShifting = false;
+            isShiftingSideways = false;
+            isShiftingUp = false;
+            isShiftingDiagonallyUp = false;
+        }
+    }
     private void FlipCharacter()
     {
         Vector3 currentScale = transform.localScale;
