@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -386,6 +387,11 @@ public class PlayerScript : MonoBehaviour
                 gameManager.playerIsTeleporting = false;
             }
         }
+    }
+
+    void OnResetLevel()
+    {
+        FindObjectOfType<GameManagerScript>().RestartLevel();
     }
     
     #region IEnumerators

@@ -71,6 +71,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResetLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""c63a476d-ca36-4824-a25a-34082ea99b9b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -370,6 +379,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""PauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1e0d677-15ac-4976-a3d6-f3ae21a707a1"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54ac17d1-bcd6-46fc-a41f-51271d7ffcdd"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -383,6 +414,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_BasicMovement_Shifting = m_BasicMovement.FindAction("Shifting", throwIfNotFound: true);
         m_BasicMovement_ShiftingVector = m_BasicMovement.FindAction("ShiftingVector", throwIfNotFound: true);
         m_BasicMovement_PauseMenu = m_BasicMovement.FindAction("PauseMenu", throwIfNotFound: true);
+        m_BasicMovement_ResetLevel = m_BasicMovement.FindAction("ResetLevel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -449,6 +481,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_BasicMovement_Shifting;
     private readonly InputAction m_BasicMovement_ShiftingVector;
     private readonly InputAction m_BasicMovement_PauseMenu;
+    private readonly InputAction m_BasicMovement_ResetLevel;
     public struct BasicMovementActions
     {
         private @PlayerInput m_Wrapper;
@@ -458,6 +491,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Shifting => m_Wrapper.m_BasicMovement_Shifting;
         public InputAction @ShiftingVector => m_Wrapper.m_BasicMovement_ShiftingVector;
         public InputAction @PauseMenu => m_Wrapper.m_BasicMovement_PauseMenu;
+        public InputAction @ResetLevel => m_Wrapper.m_BasicMovement_ResetLevel;
         public InputActionMap Get() { return m_Wrapper.m_BasicMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -482,6 +516,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @PauseMenu.started += instance.OnPauseMenu;
             @PauseMenu.performed += instance.OnPauseMenu;
             @PauseMenu.canceled += instance.OnPauseMenu;
+            @ResetLevel.started += instance.OnResetLevel;
+            @ResetLevel.performed += instance.OnResetLevel;
+            @ResetLevel.canceled += instance.OnResetLevel;
         }
 
         private void UnregisterCallbacks(IBasicMovementActions instance)
@@ -501,6 +538,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @PauseMenu.started -= instance.OnPauseMenu;
             @PauseMenu.performed -= instance.OnPauseMenu;
             @PauseMenu.canceled -= instance.OnPauseMenu;
+            @ResetLevel.started -= instance.OnResetLevel;
+            @ResetLevel.performed -= instance.OnResetLevel;
+            @ResetLevel.canceled -= instance.OnResetLevel;
         }
 
         public void RemoveCallbacks(IBasicMovementActions instance)
@@ -525,5 +565,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnShifting(InputAction.CallbackContext context);
         void OnShiftingVector(InputAction.CallbackContext context);
         void OnPauseMenu(InputAction.CallbackContext context);
+        void OnResetLevel(InputAction.CallbackContext context);
     }
 }
