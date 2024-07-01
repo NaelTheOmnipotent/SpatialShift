@@ -679,7 +679,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 6113396942031501470}
-    m_Position: {x: 330, y: -30, z: 0}
+    m_Position: {x: 370, y: -80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4355412612015803549}
     m_Position: {x: 150, y: 230, z: 0}
@@ -2052,7 +2052,7 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: YSpeed
     m_EventTreshold: -0.01
-  - m_ConditionMode: 1
+  - m_ConditionMode: 2
     m_ConditionEvent: Grounded
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
