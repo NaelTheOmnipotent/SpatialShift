@@ -4,6 +4,7 @@ using System.Timers;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PlayerInteractionScript : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerInteractionScript : MonoBehaviour
     private InputHandlerScript inputHandler;
     [SerializeField] private Renderer renderer;
     [SerializeField] private GameManagerScript gameManager;
+    [SerializeField] private Volume playerVolume;
     
     #endregion
 
@@ -183,9 +185,12 @@ public class PlayerInteractionScript : MonoBehaviour
             if (isHeadingDownwards && destructiblePlatformSpeedRequirement <= Mathf.Abs(rb.velocity.y))
             {
                 Destroy(destructiblePlatformHit.collider.gameObject);
-                
-                Gamepad.current.SetMotorSpeeds(.5f, .5f);
-                StartCoroutine(GamePadVibration());
+
+                if (Gamepad.current != null)
+                {
+                    Gamepad.current.SetMotorSpeeds(.5f, .5f);
+                    StartCoroutine(GamePadVibration());
+                }
             }
         }
         
@@ -263,8 +268,11 @@ public class PlayerInteractionScript : MonoBehaviour
         isHittingEnemy = true;
         isHeadingDownwards = false;
 
-        Gamepad.current.SetMotorSpeeds(.075f, .075f);
-        StartCoroutine(GamePadVibration());
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(.075f, .075f);
+            StartCoroutine(GamePadVibration());
+        }
     }
     
     private void OnCollisionEnter2D(Collision2D other)
@@ -272,16 +280,24 @@ public class PlayerInteractionScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && !isHittingEnemy)
         {
             Damage();
+            StartCoroutine(PlayerVolumeUp());
             
-            Gamepad.current.SetMotorSpeeds(.4f, .4f);
-            StartCoroutine(GamePadVibration());
+            if (Gamepad.current != null)
+            {
+                Gamepad.current.SetMotorSpeeds(.4f, .4f);
+                StartCoroutine(GamePadVibration());
+            }
         }
         else if (other.gameObject.CompareTag("DangerZone"))
         {
             Damage();
-            
-            Gamepad.current.SetMotorSpeeds(.4f, .4f);
-            StartCoroutine(GamePadVibration());
+            StartCoroutine(PlayerVolumeUp());
+
+            if (Gamepad.current != null)
+            {
+                Gamepad.current.SetMotorSpeeds(.4f, .4f);
+                StartCoroutine(GamePadVibration());
+            }
         }
     }
 
@@ -323,6 +339,51 @@ public class PlayerInteractionScript : MonoBehaviour
         isDamaged = false;
     }
 
+    IEnumerator PlayerVolumeUp()
+    {
+        while (playerVolume.weight < 0.99f)
+        {
+            playerVolume.weight = Mathf.Lerp(playerVolume.weight, 1, 10 * Time.deltaTime);
+            Debug.Log(playerVolume.weight);
+            yield return null;
+        }
+
+        playerVolume.weight = 1;
+        
+        yield return new WaitForSeconds(.5f);
+        StartCoroutine(PlayerVolumeDown());
+    }
+    
+    IEnumerator PlayerVolumeDown()
+    {
+        
+        while (playerVolume.weight > 0.81f)
+        { 
+            playerVolume.weight = Mathf.Lerp(playerVolume.weight, .8f, 5 * Time.deltaTime);
+            Debug.Log(playerVolume.weight); 
+            yield return null;
+        }
+        
+        playerVolume.weight = .8f;
+           
+        if(isDamaged)
+        {
+            yield return new WaitForSeconds(.5f); 
+            StartCoroutine(PlayerVolumeUp());
+            Debug.Log(true);
+        }
+        else
+        {
+            while (playerVolume.weight > 0.01f)
+            {
+                playerVolume.weight = Mathf.Lerp(playerVolume.weight, 0, 5 * Time.deltaTime);
+                Debug.Log(playerVolume.weight);
+                yield return null;
+            }
+            playerVolume.weight = 0;
+        }
+    }
+
     #endregion
 
     IEnumerator GamePadVibration()
@@ -330,6 +391,8 @@ public class PlayerInteractionScript : MonoBehaviour
         yield return new WaitForSecondsRealtime(.25f);
         Gamepad.current.SetMotorSpeeds(0,0);
     }
+    
+    
 }
 
 
