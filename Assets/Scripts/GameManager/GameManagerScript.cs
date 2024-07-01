@@ -1,9 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Bloom = UnityEngine.Rendering.PostProcessing.Bloom;
-using DepthOfField = UnityEngine.Rendering.PostProcessing.DepthOfField;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -25,8 +23,8 @@ public class GameManagerScript : MonoBehaviour
     public static bool hasHitCheckpoint;
     
     [Header("Debug")]
-    [SerializeField] private int fps;
-    [Range(0, 10)] [SerializeField]private float timeScale = 1;
+    [Range(0, 500)][SerializeField] private int fps;
+    [Range(0, 10)] [SerializeField] private float timeScale = 1;
     
     [Header("Misc")]
     [HideInInspector] public bool playerIsTeleporting;

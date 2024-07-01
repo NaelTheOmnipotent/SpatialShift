@@ -11,7 +11,6 @@ public class ParallaxScript : MonoBehaviour
      [SerializeField] private Camera cam;
      [Range(0,1)][SerializeField] private float parallaxEffectStrengthX;
      [Range(0,1)][SerializeField] private float parallaxEffectStrengthY;
-     [SerializeField] private float verticalOffset;
 
      private void Start()
      {
@@ -20,7 +19,7 @@ public class ParallaxScript : MonoBehaviour
           length = GetComponent<SpriteRenderer>().bounds.size.x;
      }
 
-     private void Update()
+     private void LateUpdate()
      {
           float distanceX = cam.transform.position.x * parallaxEffectStrengthX;
           float distanceY = (cam.transform.position.y + 33) * parallaxEffectStrengthY;
