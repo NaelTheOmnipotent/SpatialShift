@@ -131,7 +131,7 @@
                 },
                 {
                     "name": "LeftStick",
-                    "id": "02061b5c-f08b-4636-9725-c629d88d003b",
+                    "id": "310a071c-4d19-45eb-9037-c7387eb7ff3f",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -142,7 +142,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "352ea640-28a1-4d22-9d4b-9bbdc2b353b5",
+                    "id": "8cae189e-a528-4df5-a7a2-27bacd783a56",
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
@@ -153,7 +153,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "b038a608-0347-467a-81e8-eed180cc5192",
+                    "id": "3022d323-11b9-448f-83b9-dae9ba9ee147",
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
@@ -164,7 +164,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "89e3813f-021f-4097-84aa-e3ebe3dde321",
+                    "id": "5f52e675-4ded-4b9c-b1c3-0dbf8f533d7c",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
@@ -175,8 +175,8 @@
                 },
                 {
                     "name": "right",
-                    "id": "15e96963-55d3-409c-bd61-c90689fe32d8",
-                    "path": "<Gamepad>/leftStick/left",
+                    "id": "eb22df5f-6f6a-4502-9cf2-405fc1d0dcc9",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -263,8 +263,8 @@
                 },
                 {
                     "name": "LeftStick",
-                    "id": "315e673f-0971-4c17-9b8a-fa3ef92e1962",
-                    "path": "2DVector",
+                    "id": "7f806386-1dc7-4cc5-aef7-dc6a842fe776",
+                    "path": "2DVector(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -274,7 +274,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "88ad7eea-cf45-4149-babc-65b09e6bc446",
+                    "id": "7ef8c045-f02a-4b4b-aa07-62ddd847e24d",
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
@@ -285,7 +285,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "8dded93a-7e7c-4682-8dbb-0a20606c00eb",
+                    "id": "9f1a47ac-5bba-4058-b40e-85dd2d466e03",
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
@@ -296,7 +296,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "10cb38cb-7490-4cad-997f-de8e7b9750a0",
+                    "id": "f562d748-1c0a-41a4-b2e0-8e165fe104af",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
@@ -307,7 +307,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "034925fa-1ba2-491f-b486-588311cad569",
+                    "id": "b71a5bc4-e227-4d67-b4d9-abe9dbeb8d95",
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
@@ -331,6 +331,17 @@
                     "name": "",
                     "id": "660b606e-0d6d-4b98-96b3-ea745274625e",
                     "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25d2ba78-4e12-4f0a-917b-dc90ca843b80",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
