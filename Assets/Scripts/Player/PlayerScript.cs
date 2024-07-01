@@ -161,8 +161,6 @@ public class PlayerScript : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
-            
-            Debug.Log(rb.velocity.magnitude);
 
             //Extra Deceleration when pressing in the opposite way of travel
             if (rb.velocity.x > resetGroundSpeed && inputHandler.MovementInput().x < 0)

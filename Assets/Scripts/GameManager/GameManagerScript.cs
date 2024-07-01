@@ -40,11 +40,8 @@ public class GameManagerScript : MonoBehaviour
     private void Awake()
     {
         canvas.SetActive(true);
-        
-        if (globalVolume.profile.TryGet<VolumeComponent>(out var tmp))
-        {
-            Debug.Log(tmp.name);
-        }
+
+        globalVolume.weight = 1;
     }
 
 
