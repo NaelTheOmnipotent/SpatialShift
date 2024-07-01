@@ -4,8 +4,10 @@ public class TimerStartScript : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GameManagerScript.timerIsRunning = true;
-        Debug.Log("Timer Started");
+        if (other.CompareTag("Player"))
+        {
+            GameManagerScript.timerIsRunning = true;
+        }
     }
 
     private void OnDrawGizmos()

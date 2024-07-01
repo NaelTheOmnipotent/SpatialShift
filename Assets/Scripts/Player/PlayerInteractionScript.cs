@@ -3,6 +3,7 @@ using System.Collections;
 using System.Timers;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteractionScript : MonoBehaviour
 {
@@ -47,11 +48,15 @@ public class PlayerInteractionScript : MonoBehaviour
     private float tempInvincibilityFlashIntervals;
 
     #endregion
+    
 
     [Header("Slope")]
     [Range(0, 5)] [SerializeField] float slopeJumpForce;
     [SerializeField] private float rotationSpeed;
     private float rotation;
+
+    [Header("Misc")] 
+    private float hardHitOnGroundSpeed;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -178,6 +183,9 @@ public class PlayerInteractionScript : MonoBehaviour
             if (isHeadingDownwards && destructiblePlatformSpeedRequirement <= Mathf.Abs(rb.velocity.y))
             {
                 Destroy(destructiblePlatformHit.collider.gameObject);
+                
+                Gamepad.current.SetMotorSpeeds(.5f, .5f);
+                StartCoroutine(GamePadVibration());
             }
         }
         
@@ -254,6 +262,9 @@ public class PlayerInteractionScript : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, ySpeed * 1.35f);
         isHittingEnemy = true;
         isHeadingDownwards = false;
+
+        Gamepad.current.SetMotorSpeeds(.075f, .075f);
+        StartCoroutine(GamePadVibration());
     }
     
     private void OnCollisionEnter2D(Collision2D other)
@@ -261,10 +272,16 @@ public class PlayerInteractionScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && !isHittingEnemy)
         {
             Damage();
+            
+            Gamepad.current.SetMotorSpeeds(.4f, .4f);
+            StartCoroutine(GamePadVibration());
         }
         else if (other.gameObject.CompareTag("DangerZone"))
         {
             Damage();
+            
+            Gamepad.current.SetMotorSpeeds(.4f, .4f);
+            StartCoroutine(GamePadVibration());
         }
     }
 
@@ -307,6 +324,12 @@ public class PlayerInteractionScript : MonoBehaviour
     }
 
     #endregion
+
+    IEnumerator GamePadVibration()
+    {
+        yield return new WaitForSecondsRealtime(.25f);
+        Gamepad.current.SetMotorSpeeds(0,0);
+    }
 }
 
 

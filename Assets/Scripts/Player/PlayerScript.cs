@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
@@ -314,7 +315,7 @@ public class PlayerScript : MonoBehaviour
                 spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingSideways = true;
                 gameManager.playerIsTeleporting = false;
-                
+
             }
             //Up-Right
             if (inputHandler.ShiftingVector() == new Vector2(1, 1) && !inputHandler.isHoldingTeleport())
@@ -378,8 +379,8 @@ public class PlayerScript : MonoBehaviour
                 Time.timeScale = 1;
                 rb.velocity = new Vector2(0, -momentumWheel.momentum);
                 
-                spriteRendererScript.isShifting = false;
                 playerInteractionScript.isHeadingDownwards = true;
+                spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingDown = true;
                 gameManager.playerIsTeleporting = false;
             }
