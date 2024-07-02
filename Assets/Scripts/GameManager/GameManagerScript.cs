@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using Bloom = UnityEngine.Rendering.PostProcessing.Bloom;
@@ -39,7 +40,12 @@ public class GameManagerScript : MonoBehaviour
     {
         canvas.SetActive(true);
 
-        globalVolume.weight = 1;
+        globalVolume.weight = 0;
+        
+        if (Gamepad.current.enabled)
+        {
+            Gamepad.current.SetMotorSpeeds(0,0);
+        }
     }
 
 
@@ -81,6 +87,11 @@ public class GameManagerScript : MonoBehaviour
         currentTime = 0;
         minutes = 0;
         
+        if (Gamepad.current.enabled)
+        {
+            Gamepad.current.SetMotorSpeeds(0,0);
+        }
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
@@ -88,6 +99,10 @@ public class GameManagerScript : MonoBehaviour
     //Reloads from the last Checkpoint
     public void RestartFromCheckpoint()
     {
+        if (Gamepad.current.enabled)
+        {
+            Gamepad.current.SetMotorSpeeds(0,0);
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }

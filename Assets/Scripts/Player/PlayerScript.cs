@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -310,9 +312,10 @@ public class PlayerScript : MonoBehaviour
                 Time.timeScale = 1; 
                 rb.velocity = new Vector2(momentumWheel.momentum, 0);
 
+                spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingSideways = true;
                 gameManager.playerIsTeleporting = false;
-                
+
             }
             //Up-Right
             if (inputHandler.ShiftingVector() == new Vector2(1, 1) && !inputHandler.isHoldingTeleport())
@@ -321,6 +324,7 @@ public class PlayerScript : MonoBehaviour
                 Time.timeScale = 1;
                 rb.velocity = new Vector2(momentumWheel.momentum * 0.71f, momentumWheel.momentum * 1f);
 
+                spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingDiagonallyUp = true;
                 gameManager.playerIsTeleporting = false;
             }
@@ -331,6 +335,7 @@ public class PlayerScript : MonoBehaviour
                 Time.timeScale = 1;
                 rb.velocity = new Vector2(0, momentumWheel.momentum * 1.5f);
 
+                spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingUp = true;
                 gameManager.playerIsTeleporting = false;
             }
@@ -341,6 +346,7 @@ public class PlayerScript : MonoBehaviour
                  Time.timeScale = 1;
                  rb.velocity = new Vector2(-momentumWheel.momentum * 0.71f, momentumWheel.momentum * 1f);
                  
+                 spriteRendererScript.isShifting = false;
                  spriteRendererScript.isShiftingDiagonallyUp = true;
                  gameManager.playerIsTeleporting = false;
             }
@@ -351,6 +357,7 @@ public class PlayerScript : MonoBehaviour
                 Time.timeScale = 1; 
                 rb.velocity = new Vector2(-momentumWheel.momentum, 0);
                 
+                spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingSideways = true;
                 gameManager.playerIsTeleporting = false;
             }
@@ -361,6 +368,7 @@ public class PlayerScript : MonoBehaviour
                 Time.timeScale = 1;
                 rb.velocity = new Vector2(-momentumWheel.momentum, -momentumWheel.momentum * 0.6f);
 
+                spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingDiagonallyDown = true;
                 gameManager.playerIsTeleporting = false;
             }
@@ -372,6 +380,7 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = new Vector2(0, -momentumWheel.momentum);
                 
                 playerInteractionScript.isHeadingDownwards = true;
+                spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingDown = true;
                 gameManager.playerIsTeleporting = false;
             }
@@ -382,10 +391,16 @@ public class PlayerScript : MonoBehaviour
                 Time.timeScale = 1; 
                 rb.velocity = new Vector2(momentumWheel.momentum, -momentumWheel.momentum * 0.6f);
 
+                spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingDiagonallyDown = true;
                 gameManager.playerIsTeleporting = false;
             }
         }
+    }
+
+    void OnResetLevel()
+    {
+        FindObjectOfType<GameManagerScript>().RestartLevel();
     }
     
     #region IEnumerators
