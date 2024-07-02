@@ -41,6 +41,11 @@ public class GameManagerScript : MonoBehaviour
         canvas.SetActive(true);
 
         globalVolume.weight = 0;
+        
+        if (Gamepad.current.enabled)
+        {
+            Gamepad.current.SetMotorSpeeds(0,0);
+        }
     }
 
 

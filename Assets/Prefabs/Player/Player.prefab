@@ -242,6 +242,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 0
   colList: []
+--- !u!1 &824494674729808879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2393571197825592540}
+  - component: {fileID: 2161652833526711383}
+  m_Layer: 0
+  m_Name: PlayerHitVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2393571197825592540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824494674729808879}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 276.18002, y: -19.509964, z: -1.3559983}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3685105797638894296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2161652833526711383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824494674729808879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0.87
+  sharedProfile: {fileID: 11400000, guid: 689f67458b37467488d1733af596c6a8, type: 2}
 --- !u!1 &825003208628348756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,7 +1476,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2022255547
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 10
   m_Sprite: {fileID: 939732295, guid: 9aa0ec3416870f6459740e30334d87fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1948,7 +1997,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1543621863
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &2287802183909765405
@@ -2044,6 +2093,7 @@ Transform:
   - {fileID: 1422146897515341476}
   - {fileID: 1317317115751523791}
   - {fileID: 4243380022953548013}
+  - {fileID: 2393571197825592540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3552413731216944638
@@ -2080,7 +2130,7 @@ MonoBehaviour:
   trueVelocity: 0
   hasTeleported: 0
   isNotBlocked: 0
-  shiftCountDownInSeconds: 1
+  shiftCountDownInSeconds: 0.75
   shiftingAnim: {fileID: 818304916740879208, guid: c048e04d3ddf6e44d84df496fec7b7da, type: 3}
   shiftingAnim1: {fileID: 3203486508455881619, guid: 55d7243c43b5e2f4d9c40a83c33f9a2f, type: 3}
   shiftingAnimDestruction: 0.7
@@ -2102,6 +2152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer: {fileID: 7762491485156470711}
   gameManager: {fileID: 0}
+  playerVolume: {fileID: 2161652833526711383}
   groundMask:
     serializedVersion: 2
     m_Bits: 960
@@ -2118,7 +2169,7 @@ MonoBehaviour:
   isHeadingDownwards: 0
   coinCount: 0
   invincibilityTime: 1.2
-  damagedTime: 1
+  damagedTime: 10
   invincibilityFlashIntervals: 0.2
   reboundForce: 10
   isInvincible: 0
@@ -2529,7 +2580,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1195101229
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 144
   m_Sprite: {fileID: -1037465666, guid: ef7cc5b2f9cbdbd4a978f95c905ca2e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
