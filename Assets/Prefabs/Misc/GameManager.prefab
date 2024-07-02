@@ -50,7 +50,7 @@ MonoBehaviour:
   blackScreen: {fileID: 0}
   sceneNamesLevel:
   - DebugLevel
-  startOfLevelOne: {x: 0, y: 0, z: 0}
+  startOfLevelOne: {x: -9, y: -1, z: 0}
   fps: 300
   timeScale: 1
   playerIsTeleporting: 0
