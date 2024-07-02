@@ -1964,17 +1964,6 @@ RectTransform:
   m_AnchoredPosition: {x: 124.7, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &650964538 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5708011554465674675, guid: 4ac8d499f64357f478e646cc056cc206, type: 3}
-  m_PrefabInstance: {fileID: 1341507565}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58cdbe40dcef9d543a0c6ce6e287d135, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &655238610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2189,7 +2178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countDownText: {fileID: 795396950}
   pauseMenuCanvasGroup: {fileID: 661524783}
-  gameManager: {fileID: 650964538}
+  gameManager: {fileID: 0}
 --- !u!1 &675093970
 GameObject:
   m_ObjectHideFlags: 0
@@ -4936,6 +4925,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4915711886046423868, guid: 4ac8d499f64357f478e646cc056cc206, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1612789667}
+    - target: {fileID: 4915711886046423868, guid: 4ac8d499f64357f478e646cc056cc206, type: 3}
+      propertyPath: blackScreen
+      value: 
+      objectReference: {fileID: 2092554414}
+    - target: {fileID: 4915711886046423868, guid: 4ac8d499f64357f478e646cc056cc206, type: 3}
+      propertyPath: playerCanvas
+      value: 
+      objectReference: {fileID: 1854042267}
     - target: {fileID: 5708011554465674675, guid: 4ac8d499f64357f478e646cc056cc206, type: 3}
       propertyPath: canvas
       value: 
@@ -6284,6 +6285,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5941205325862443741, guid: f1e9ff70a5ff8314db5632a98d3de294, type: 3}
   m_PrefabInstance: {fileID: 2075400105}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1638671741 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4915711886046423868, guid: 4ac8d499f64357f478e646cc056cc206, type: 3}
+  m_PrefabInstance: {fileID: 1341507565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58cdbe40dcef9d543a0c6ce6e287d135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1652034983
 GameObject:
   m_ObjectHideFlags: 0
@@ -8524,7 +8536,7 @@ PrefabInstance:
     - target: {fileID: 202779013382369664, guid: f8309919bee8a6a49b76ff89ff31b7a6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 650964538}
+      objectReference: {fileID: 1638671741}
     - target: {fileID: 1469316099841775192, guid: f8309919bee8a6a49b76ff89ff31b7a6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8533,10 +8545,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3552413731216944638, guid: f8309919bee8a6a49b76ff89ff31b7a6, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 650964538}
     - target: {fileID: 3685105797638894296, guid: f8309919bee8a6a49b76ff89ff31b7a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.74
@@ -8577,25 +8585,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5015992656774646506, guid: f8309919bee8a6a49b76ff89ff31b7a6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.18
-      objectReference: {fileID: 0}
     - target: {fileID: 5851705920377681012, guid: f8309919bee8a6a49b76ff89ff31b7a6, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6661242213539329790, guid: f8309919bee8a6a49b76ff89ff31b7a6, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6661242213539329790, guid: f8309919bee8a6a49b76ff89ff31b7a6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6661242213539329790, guid: f8309919bee8a6a49b76ff89ff31b7a6, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
