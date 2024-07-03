@@ -19,7 +19,7 @@ public class ParallaxScript : MonoBehaviour
 
     private void Update()
     {
-        float distanceX = Time.time * 15 * parallaxEffectStrengthX;
+        float distanceX = cam.transform.position.x * parallaxEffectStrengthX;
         float distanceY = (cam.transform.position.y + 33) * parallaxEffectStrengthY;
 
         float movement = cam.transform.position.x * (1 - parallaxEffectStrengthX);

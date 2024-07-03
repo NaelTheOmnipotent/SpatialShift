@@ -7,10 +7,9 @@ public class HUDScript : MonoBehaviour
     [SerializeField] private MomentumWheelScript momentumWheelScript;
     private PlayerInteractionScript playerInteraction;
     
-    [SerializeField] private TextMeshProUGUI velocityText;
-    [SerializeField] private TextMeshProUGUI coinTextAmount;
     [SerializeField] private TextMeshProUGUI timerText;
     
+    [SerializeField] private Rigidbody2D needle;
     int minutes;
     int seconds;
     float milliSeconds;
@@ -23,15 +22,7 @@ public class HUDScript : MonoBehaviour
 
     private void Update()
     {
-        if (!playerScript.hasTeleported)
-        {
-            velocityText.text = playerScript.rb.velocity.magnitude.ToString("00");
-        }
-        else
-        {
-            velocityText.text = momentumWheelScript.momentum.ToString("00");
-        }
-        coinTextAmount.text = playerInteraction.coinCount.ToString("");
+        needle.rotation = 120 + -playerScript.rb.velocity.magnitude * 4;
         
         TimerText();
     }
