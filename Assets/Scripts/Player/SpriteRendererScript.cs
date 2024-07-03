@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SpriteRendererScript : MonoBehaviour
@@ -24,6 +25,10 @@ public class SpriteRendererScript : MonoBehaviour
     #region Animation
 
     [SerializeField] private GameObject cape;
+    [SerializeField] private Rigidbody2D rig;
+    
+    [SerializeField] private float rayCastDistance;
+    [SerializeField] private LayerMask groundMask;
     
     [HideInInspector] public bool isBraking;
     [HideInInspector] public bool isShiftingDown;
@@ -35,6 +40,8 @@ public class SpriteRendererScript : MonoBehaviour
     [HideInInspector] public bool isJumping;
     
     private bool isFacingRight = true;
+    private bool isGrounded;
+    private Vector3 startingPos;
 
     #endregion
 
@@ -124,7 +131,7 @@ public class SpriteRendererScript : MonoBehaviour
         animator.SetBool("Braking", isBraking);
         animator.SetBool("Jumping", isJumping);
         animator.SetFloat("YSpeed", playerScript.rb.velocity.y);
-        animator.SetBool("Grounded", groundChecker.isGrounded);
+        animator.SetBool("Grounded", isGrounded);
         
         animator.SetBool("ShiftUp", isShiftingUp);
         animator.SetBool("ShiftDiagonallyUp", isShiftingDiagonallyUp);
@@ -167,5 +174,20 @@ public class SpriteRendererScript : MonoBehaviour
         
         transform.localScale = currentScale;
         isFacingRight = !isFacingRight;
+    }
+
+    private void FixedUpdate()
+    {
+        RaycastHit2D leftGroundHit = Physics2D.Raycast(rig.transform.position + new Vector3(-0.25f, 0, 0), -Vector2.up, rayCastDistance, groundMask);
+        RaycastHit2D rightGroundHit = Physics2D.Raycast(rig.transform.position + new Vector3(0.25f, 0, 0), -Vector2.up, rayCastDistance, groundMask);
+
+        if (leftGroundHit.collider || rightGroundHit.collider)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
 }
