@@ -880,7 +880,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: YSpeed
-    m_EventTreshold: -10
+    m_EventTreshold: -1
   - m_ConditionMode: 2
     m_ConditionEvent: Grounded
     m_EventTreshold: 0
