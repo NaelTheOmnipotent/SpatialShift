@@ -41,6 +41,11 @@ public class GameManagerScript : MonoBehaviour
         canvas.SetActive(true);
 
         globalVolume.weight = 0;
+
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(0,0);
+        }
     }
 
 
@@ -82,6 +87,11 @@ public class GameManagerScript : MonoBehaviour
         currentTime = 0;
         minutes = 0;
         
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(0,0);
+        }
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
@@ -89,6 +99,11 @@ public class GameManagerScript : MonoBehaviour
     //Reloads from the last Checkpoint
     public void RestartFromCheckpoint()
     {
+        
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(0,0);
+        }
         
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
