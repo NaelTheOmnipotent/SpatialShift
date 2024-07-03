@@ -22,7 +22,8 @@ public class HUDScript : MonoBehaviour
 
     private void Update()
     {
-        needle.rotation = 120 + -playerScript.rb.velocity.magnitude * 4;
+        var needleRotationTarget = 120 + -playerScript.rb.velocity.magnitude * 4;
+        needle.rotation = Mathf.Lerp(needle.rotation, needleRotationTarget, Time.deltaTime * 5);
         
         TimerText();
     }

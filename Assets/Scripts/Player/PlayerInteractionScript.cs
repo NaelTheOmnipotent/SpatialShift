@@ -360,7 +360,6 @@ public class PlayerInteractionScript : MonoBehaviour
         while (playerVolume.weight > 0.81f)
         { 
             playerVolume.weight = Mathf.Lerp(playerVolume.weight, .8f, 5 * Time.deltaTime);
-            Debug.Log(playerVolume.weight); 
             yield return null;
         }
         

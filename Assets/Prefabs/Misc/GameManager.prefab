@@ -51,7 +51,7 @@ MonoBehaviour:
   sceneNamesLevel:
   - DebugLevel
   startOfLevelOne: {x: -9, y: -1, z: 0}
-  fps: 300
+  fps: 52
   timeScale: 1
   playerIsTeleporting: 0
   globalVolume: {fileID: 0}
