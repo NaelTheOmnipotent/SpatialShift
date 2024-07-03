@@ -16,6 +16,7 @@ public class SettingsScript : MonoBehaviour
     public TextMeshProUGUI masterVolumePercentage;
     public TextMeshProUGUI musicVolumePercentage;
     public TextMeshProUGUI sfxVolumePercentage;
+    [SerializeField] private Toggle fullScreenToggle;
 
     private string masterVolumeName = "masterVolume";
     private float masterVolume;
@@ -27,14 +28,16 @@ public class SettingsScript : MonoBehaviour
     }
 
 
-    public void SetFullscreen(bool isFullScreenOn)
+    public void FullScreenChange()
     {
-        if (isFullScreenOn)
+        if (fullScreenToggle.isOn)
         {
+            Debug.Log(true);
             Screen.fullScreen = true;
         }
         else
         {
+            Debug.Log(false);
             Screen.fullScreen = false;
         }
     }
