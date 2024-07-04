@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using Bloom = UnityEngine.Rendering.PostProcessing.Bloom;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -33,8 +32,6 @@ public class GameManagerScript : MonoBehaviour
 
     [Header("Global Volume")] 
     [SerializeField] private Volume globalVolume;
-
-    private Bloom bloom;
 
     private void Awake()
     {
