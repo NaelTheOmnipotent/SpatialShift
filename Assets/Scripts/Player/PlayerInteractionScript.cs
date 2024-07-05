@@ -201,7 +201,7 @@ public class PlayerInteractionScript : MonoBehaviour
         RaycastHit2D fallThroughPlatformHit = Physics2D.Raycast(groundedScript.transform.position, -Vector2.up, fallThroughPlatformHitRange, fallThroughPlatformMask);
         if (fallThroughPlatformHit.collider)
         {
-            if (inputHandler.MovementInput().y < -.8)
+            if (inputHandler.MovementInput().y < -.76)
             {
                 fallThroughPlatformHit.collider.gameObject.GetComponent<FallThroughPlatformsScript>().canFallThrough = true;
             }
