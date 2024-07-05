@@ -390,8 +390,6 @@ public class PlayerInteractionScript : MonoBehaviour
         yield return new WaitForSecondsRealtime(.25f);
         Gamepad.current.SetMotorSpeeds(0,0);
     }
-    
-    
 }
 
 

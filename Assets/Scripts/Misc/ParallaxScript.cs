@@ -22,8 +22,6 @@ public class ParallaxScript : MonoBehaviour
     {
         cameraPos = Vector2.Lerp(cameraPos, cam.transform.position, 25 * Time.deltaTime);
         
-        Debug.Log(cam.transform.position.x - cameraPos.x);
-        
         float distanceX = cameraPos.x * parallaxEffectStrengthX;
         float distanceY = (cameraPos.y + 33) * parallaxEffectStrengthY;
 

@@ -62,15 +62,10 @@ public class HorizontalEnemyScript : MonoBehaviour
         if (deathAnim != null)
         {
             var spawnedDeathAnim = Instantiate(deathAnim, transform.position, Quaternion.identity);
-            if (transform.localScale.x > 0)
+            if (transform.localScale.x < 0)
             {
-                Debug.Log("Left");
-            }
-            else if (transform.localScale.x < 0)
-            {
-                Debug.Log("Right");
+                spawnedDeathAnim.GetComponent<SpriteRenderer>().flipX = true;
             }
         }
     }
-    
 }
