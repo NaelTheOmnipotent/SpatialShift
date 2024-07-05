@@ -121,7 +121,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: cityUpdate (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 323
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a7d86c3844c70b409c61485bff254a5
+      internalID: -856977097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cityUpdate (1)_1
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 0
+        width: 715
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fd38d7032062ad489a76dedb33d3012
+      internalID: -553789519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cityUpdate (1)_2
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 0
+        width: 260
+        height: 531
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 069c866585b228f4eb09ba78b482e931
+      internalID: -1600874523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cityUpdate (1)_3
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 0
+        width: 555
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b12006b9f34d6c4c92a07618449116d
+      internalID: 799644758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +216,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cityUpdate (1)_0: -856977097
+      cityUpdate (1)_1: -553789519
+      cityUpdate (1)_2: -1600874523
+      cityUpdate (1)_3: 799644758
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

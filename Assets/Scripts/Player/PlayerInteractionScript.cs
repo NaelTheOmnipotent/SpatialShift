@@ -59,6 +59,7 @@ public class PlayerInteractionScript : MonoBehaviour
 
     [Header("Misc")] 
     private float hardHitOnGroundSpeed;
+    [SerializeField] private GameObject destructibleGroundAnim;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -184,7 +185,9 @@ public class PlayerInteractionScript : MonoBehaviour
         {
             if (isHeadingDownwards && destructiblePlatformSpeedRequirement <= Mathf.Abs(rb.velocity.y))
             {
+                var destructiblePlatformDestructionAnim = Instantiate(destructibleGroundAnim, destructiblePlatformHit.collider.gameObject.transform.position, Quaternion.identity);
                 Destroy(destructiblePlatformHit.collider.gameObject);
+                Destroy(destructiblePlatformDestructionAnim, .5f);
 
                 if (Gamepad.current != null)
                 {
