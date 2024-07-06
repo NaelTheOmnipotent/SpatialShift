@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
   public Animator anim;
+  public Animator credditsAnim;
   
   [Header("___MainMenuPanel___")] 
   [SerializeField] private CanvasGroup mainMenuPanel;
@@ -115,7 +116,7 @@ public class SceneController : MonoBehaviour
     HideCanvasGroup(achievementPanel);
     HideCanvasGroup(tipsPanel);
     HideCanvasGroup(controllerControlsActivated);
-    anim.SetTrigger("openControls");
+    
   }
 
   public void OpenKeyBoardControls()
@@ -160,6 +161,7 @@ public class SceneController : MonoBehaviour
     HideCanvasGroup(achievementPanel);
     HideCanvasGroup(tipsPanel);
     HideCanvasGroup(controllerControlsActivated);
+    credditsAnim.SetTrigger("CreditsShowRoles");
   }
   
   void ShowCanvasGroup(CanvasGroup canvasGroup)
