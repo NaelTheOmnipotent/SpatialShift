@@ -188,6 +188,7 @@ public class PlayerInteractionScript : MonoBehaviour
                 var destructiblePlatformDestructionAnim = Instantiate(destructibleGroundAnim, destructiblePlatformHit.collider.gameObject.transform.position, Quaternion.identity);
                 Destroy(destructiblePlatformHit.collider.gameObject);
                 Destroy(destructiblePlatformDestructionAnim, .5f);
+                playerScript.touchedGround = true;
 
                 if (Gamepad.current != null)
                 {
@@ -295,6 +296,7 @@ public class PlayerInteractionScript : MonoBehaviour
         else if (other.gameObject.CompareTag("DangerZone"))
         {
             Damage();
+            groundedScript.isGrounded = true;
             StartCoroutine(PlayerVolumeUp());
 
             if (Gamepad.current != null)
@@ -379,7 +381,6 @@ public class PlayerInteractionScript : MonoBehaviour
             while (playerVolume.weight > 0.01f)
             {
                 playerVolume.weight = Mathf.Lerp(playerVolume.weight, 0, 5 * Time.deltaTime);
-                Debug.Log(playerVolume.weight);
                 yield return null;
             }
             playerVolume.weight = 0;
