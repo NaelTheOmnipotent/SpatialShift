@@ -5,15 +5,14 @@ public class UIControllerScript : MonoBehaviour
 {
     [SerializeField] private CanvasGroup hudCanvasGroup;
     [SerializeField] private CanvasGroup pauseMenuCanvasGroup;
+    [SerializeField] private CanvasGroup leaderboardCanvasGroup;
     
     [SerializeField] private InputHandlerScript inputHandler;
     private void Start()
     {
         hudCanvasGroup.ShowCanvasGroup();
         pauseMenuCanvasGroup.HideCanvasGroup();
-        
-        
-        
+        leaderboardCanvasGroup.HideCanvasGroup();
     }
 
     private void Update()

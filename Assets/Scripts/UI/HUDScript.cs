@@ -10,10 +10,11 @@ public class HUDScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     
     [SerializeField] private Rigidbody2D needle;
-    int minutes;
-    int seconds;
-    float milliSeconds;
-
+    [HideInInspector] public int minutes;
+    [HideInInspector] public int seconds;
+    [HideInInspector] public float milliSeconds;
+    [HideInInspector] public float timeAsScore;
+    
     private void Start()
     {
         playerInteraction = playerScript.gameObject.GetComponent<PlayerInteractionScript>();
@@ -51,5 +52,6 @@ public class HUDScript : MonoBehaviour
         
         //formats the text
         timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliSeconds);
+        timeAsScore = minutes * 60 + seconds + milliSeconds / 100;
     }
 }

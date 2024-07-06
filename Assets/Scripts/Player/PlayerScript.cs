@@ -47,7 +47,7 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Shifting")] 
     public float shiftHeight;
-    private bool touchedGround;
+    [HideInInspector] public bool touchedGround;
     [HideInInspector] public float trueVelocity;
     [HideInInspector] public bool hasTeleported;
     [HideInInspector] public bool isNotBlocked;

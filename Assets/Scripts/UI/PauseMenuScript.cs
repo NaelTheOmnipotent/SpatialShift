@@ -36,7 +36,7 @@ public class PauseMenuScript : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        gameManager.BackToMainMenu();
     }
 
     //The Countdown for when the player Closes the Pause Menu

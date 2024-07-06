@@ -57,7 +57,6 @@ public class GameManagerScript : MonoBehaviour
         {
             Application.targetFrameRate = fps;
         }
-
     }
 
 
@@ -103,6 +102,22 @@ public class GameManagerScript : MonoBehaviour
         }
         
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
+    }
+
+    public void BackToMainMenu()
+    {
+        checkPointPosition = startOfLevelOne;
+        hasHitCheckpoint = false;
+        timerIsRunning = false;
+        currentTime = 0;
+        minutes = 0;
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(0,0);
+        }
+        
+        SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
     
