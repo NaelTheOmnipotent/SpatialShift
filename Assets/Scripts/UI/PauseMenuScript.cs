@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
 {
@@ -31,6 +32,11 @@ public class PauseMenuScript : MonoBehaviour
     {
         gameManager.RestartFromCheckpoint();
         pauseMenuCanvasGroup.HideCanvasGroup();
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     //The Countdown for when the player Closes the Pause Menu

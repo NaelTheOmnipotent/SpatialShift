@@ -268,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 824494674729808879}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 276.18002, y: -19.509964, z: -1.3559983}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1504,6 +1504,11 @@ MonoBehaviour:
   groundChecker: {fileID: 5824462655341331144}
   squashAmount: 150
   cape: {fileID: 6647817184008859790}
+  rig: {fileID: 398178586511199891}
+  rayCastDistance: 1.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 448
   isBraking: 0
   isShiftingDown: 0
   isShiftingUp: 0
@@ -2629,6 +2634,10 @@ MonoBehaviour:
   rig: {fileID: 398178586511199891}
   groundChecker: {fileID: 5824462655341331144}
   cape: {fileID: 6647817184008859790}
+  rayCastDistance: 1.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 448
 --- !u!1 &7043657705022830364
 GameObject:
   m_ObjectHideFlags: 0

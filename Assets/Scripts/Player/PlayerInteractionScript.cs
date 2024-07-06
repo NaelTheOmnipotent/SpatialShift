@@ -59,6 +59,7 @@ public class PlayerInteractionScript : MonoBehaviour
 
     [Header("Misc")] 
     private float hardHitOnGroundSpeed;
+    [SerializeField] private GameObject destructibleGroundAnim;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -184,7 +185,9 @@ public class PlayerInteractionScript : MonoBehaviour
         {
             if (isHeadingDownwards && destructiblePlatformSpeedRequirement <= Mathf.Abs(rb.velocity.y))
             {
+                var destructiblePlatformDestructionAnim = Instantiate(destructibleGroundAnim, destructiblePlatformHit.collider.gameObject.transform.position, Quaternion.identity);
                 Destroy(destructiblePlatformHit.collider.gameObject);
+                Destroy(destructiblePlatformDestructionAnim, .5f);
 
                 if (Gamepad.current != null)
                 {
@@ -201,7 +204,7 @@ public class PlayerInteractionScript : MonoBehaviour
         RaycastHit2D fallThroughPlatformHit = Physics2D.Raycast(groundedScript.transform.position, -Vector2.up, fallThroughPlatformHitRange, fallThroughPlatformMask);
         if (fallThroughPlatformHit.collider)
         {
-            if (inputHandler.MovementInput().y < -.8)
+            if (inputHandler.MovementInput().y < -.76)
             {
                 fallThroughPlatformHit.collider.gameObject.GetComponent<FallThroughPlatformsScript>().canFallThrough = true;
             }
@@ -345,7 +348,6 @@ public class PlayerInteractionScript : MonoBehaviour
         while (playerVolume.weight < 0.99f)
         {
             playerVolume.weight = Mathf.Lerp(playerVolume.weight, 1, 10 * Time.deltaTime);
-            Debug.Log(playerVolume.weight);
             yield return null;
         }
 
@@ -361,7 +363,6 @@ public class PlayerInteractionScript : MonoBehaviour
         while (playerVolume.weight > 0.81f)
         { 
             playerVolume.weight = Mathf.Lerp(playerVolume.weight, .8f, 5 * Time.deltaTime);
-            Debug.Log(playerVolume.weight); 
             yield return null;
         }
         
@@ -392,8 +393,6 @@ public class PlayerInteractionScript : MonoBehaviour
         yield return new WaitForSecondsRealtime(.25f);
         Gamepad.current.SetMotorSpeeds(0,0);
     }
-    
-    
 }
 
 

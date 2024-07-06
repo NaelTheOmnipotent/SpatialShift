@@ -57,6 +57,13 @@ public class JumpingEnemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(jumpingDeathAnim, transform.position, quaternion.identity);
+        if (jumpingDeathAnim != null)
+        {
+            var spawnedDeathAnim = Instantiate(jumpingDeathAnim, transform.position, Quaternion.identity);
+            if (transform.localScale.x > 0)
+            {
+                spawnedDeathAnim.GetComponent<SpriteRenderer>().flipX = true;
+            }
+        }
     }
 }

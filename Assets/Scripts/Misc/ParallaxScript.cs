@@ -5,6 +5,7 @@ public class ParallaxScript : MonoBehaviour
     private float startingPosX;
     private float startingPosY;
     private float length;
+    private Vector2 cameraPos;
 
     [SerializeField] private Camera cam;
     [Range(0, 1)] [SerializeField] private float parallaxEffectStrengthX;
@@ -19,10 +20,12 @@ public class ParallaxScript : MonoBehaviour
 
     private void Update()
     {
-        float distanceX = cam.transform.position.x * parallaxEffectStrengthX;
-        float distanceY = (cam.transform.position.y + 33) * parallaxEffectStrengthY;
+        cameraPos = Vector2.Lerp(cameraPos, cam.transform.position, 25 * Time.deltaTime);
+        
+        float distanceX = cameraPos.x * parallaxEffectStrengthX;
+        float distanceY = (cameraPos.y + 33) * parallaxEffectStrengthY;
 
-        float movement = cam.transform.position.x * (1 - parallaxEffectStrengthX);
+        float movement = cameraPos.x * (1 - parallaxEffectStrengthX);
 
         transform.position = new Vector3(startingPosX + distanceX, startingPosY + distanceY, transform.position.z);
 
