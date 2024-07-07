@@ -79,6 +79,7 @@ public class GameManagerScript : MonoBehaviour
         hasHitCheckpoint = false;
         blackScreen.gameObject.GetComponent<BlackScreenScript>().isFadingOut = true;
 
+        AchievementManagerScript.enemiesKilled = 0;
         timerIsRunning = false;
         currentTime = 0;
         minutes = 0;
@@ -108,6 +109,7 @@ public class GameManagerScript : MonoBehaviour
     public void BackToMainMenu()
     {
         checkPointPosition = startOfLevelOne;
+        AchievementManagerScript.enemiesKilled = 0;
         hasHitCheckpoint = false;
         timerIsRunning = false;
         currentTime = 0;

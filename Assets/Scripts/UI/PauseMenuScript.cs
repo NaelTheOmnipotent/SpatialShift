@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
@@ -43,15 +45,31 @@ public class PauseMenuScript : MonoBehaviour
     IEnumerator CountDown()
     {
         countDownText.text = "3";
+        StartCoroutine(ControllerRumble(.15f, .25f));
         yield return new WaitForSecondsRealtime(1);
         
         countDownText.text = "2";
+        StartCoroutine(ControllerRumble(.2f, .25f));
         yield return new WaitForSecondsRealtime(1);
         
         countDownText.text = "1";
+        StartCoroutine(ControllerRumble(.25f, .25f));
         yield return new WaitForSecondsRealtime(1);
         
         Time.timeScale = 1;
         countDownText.gameObject.SetActive(false);
+        StartCoroutine(ControllerRumble(.35f, .5f));
+    }
+
+    IEnumerator ControllerRumble(float rumbleStrength, float length)
+    {
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(rumbleStrength, rumbleStrength);
+
+            yield return new WaitForSecondsRealtime(length);
+            
+            Gamepad.current.SetMotorSpeeds(0,0);
+        }
     }
 }
