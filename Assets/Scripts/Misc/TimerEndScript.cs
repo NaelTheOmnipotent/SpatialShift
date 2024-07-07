@@ -6,9 +6,13 @@ using UnityEngine;
 public class TimerEndScript : MonoBehaviour
 {
     [SerializeField] private CanvasGroup scoreCanvasGroup;
+    [SerializeField] private CanvasGroup hudCanvasGroup;
     [SerializeField] private GameObject watchTower;
+    [SerializeField] private AchievementManagerScript achievementManager;
+    
     private GameObject player;
     private Rigidbody2D playerRigidBody;
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -21,18 +25,22 @@ public class TimerEndScript : MonoBehaviour
             
             player.GetComponent<InputHandlerScript>().enabled = false;
             
+            achievementManager.OnLevelComplete();
             StartCoroutine(WaitForScoreboardToShowUp());
         }
     }
     
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position,transform.localScale);
-    }
 
     IEnumerator WaitForScoreboardToShowUp()
     {
+        
         yield return new WaitUntil(() => playerRigidBody.velocity.x == 0);
+        
+        while (hudCanvasGroup.alpha > 0)
+        {
+            hudCanvasGroup.alpha -= Time.deltaTime;
+            yield return null;
+        }
         yield return new WaitForSeconds(1);
         
         if (player.transform.position.x > watchTower.transform.position.x)
@@ -44,8 +52,13 @@ public class TimerEndScript : MonoBehaviour
             player.transform.localScale = new Vector3(Mathf.Abs(player.transform.localScale.x), player.transform.localScale.y);
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(.5f);
         
         scoreCanvasGroup.ShowCanvasGroup();
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position,transform.localScale);
     }
 }

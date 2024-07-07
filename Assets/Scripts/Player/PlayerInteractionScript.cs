@@ -205,7 +205,7 @@ public class PlayerInteractionScript : MonoBehaviour
         RaycastHit2D fallThroughPlatformHit = Physics2D.Raycast(groundedScript.transform.position, -Vector2.up, fallThroughPlatformHitRange, fallThroughPlatformMask);
         if (fallThroughPlatformHit.collider)
         {
-            if (inputHandler.MovementInput().y < -.76)
+            if (inputHandler.MovementInput().y < -.7)
             {
                 fallThroughPlatformHit.collider.gameObject.GetComponent<FallThroughPlatformsScript>().canFallThrough = true;
             }
@@ -226,9 +226,13 @@ public class PlayerInteractionScript : MonoBehaviour
             coinCount++;
         }
         
-        else if (other.CompareTag("Checkpoint"))
+        else if (other.CompareTag("Checkpoint") && GameManagerScript.checkPointPosition != other.transform.position)
         {
             GameManagerScript.checkPointPosition = other.transform.position;
+            if (rb.velocity.magnitude > 20)
+            {
+                other.GetComponent<Animator>().Play("SignAnim");
+            }
         }
         else if (other.CompareTag("DeathPlane"))
         {
@@ -271,7 +275,8 @@ public class PlayerInteractionScript : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, ySpeed * 1.35f);
         isHittingEnemy = true;
         isHeadingDownwards = false;
-
+        AchievementManagerScript.enemiesKilled++;
+        
         if (Gamepad.current != null)
         {
             Gamepad.current.SetMotorSpeeds(.075f, .075f);
@@ -354,8 +359,8 @@ public class PlayerInteractionScript : MonoBehaviour
         }
 
         playerVolume.weight = 1;
-        
         yield return new WaitForSeconds(.5f);
+        
         StartCoroutine(PlayerVolumeDown());
     }
     
@@ -374,7 +379,6 @@ public class PlayerInteractionScript : MonoBehaviour
         {
             yield return new WaitForSeconds(.5f); 
             StartCoroutine(PlayerVolumeUp());
-            Debug.Log(true);
         }
         else
         {
