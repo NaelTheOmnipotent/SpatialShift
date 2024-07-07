@@ -25,6 +25,7 @@ public class TimerEndScript : MonoBehaviour
             
             player.GetComponent<InputHandlerScript>().enabled = false;
             
+            achievementManager.OnLevelComplete();
             StartCoroutine(WaitForScoreboardToShowUp());
         }
     }
@@ -32,6 +33,7 @@ public class TimerEndScript : MonoBehaviour
 
     IEnumerator WaitForScoreboardToShowUp()
     {
+        
         yield return new WaitUntil(() => playerRigidBody.velocity.x == 0);
         
         while (hudCanvasGroup.alpha > 0)
@@ -39,7 +41,6 @@ public class TimerEndScript : MonoBehaviour
             hudCanvasGroup.alpha -= Time.deltaTime;
             yield return null;
         }
-        achievementManager.OnLevelComplete();
         yield return new WaitForSeconds(1);
         
         if (player.transform.position.x > watchTower.transform.position.x)

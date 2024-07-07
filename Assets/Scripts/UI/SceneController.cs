@@ -36,9 +36,9 @@ public class SceneController : MonoBehaviour
   
   private void Start()
   {
-    ShowCanvasGroup(mainMenuPanel);
-    HideCanvasGroup(settingsPanel);
-    HideCanvasGroup(extrasPanel);
+      ShowCanvasGroup(mainMenuPanel);
+      HideCanvasGroup(settingsPanel); 
+      HideCanvasGroup(extrasPanel);
 
       if (PlayerPrefs.GetInt("BlueHedgehogAchievement") == 1)
       { 
@@ -58,19 +58,19 @@ public class SceneController : MonoBehaviour
 
   public void OpenSettingsPanel()
   {
-    StartCoroutine(transition());
+      StartCoroutine(transition());
   }
 
    
   public void CloseSettingsPanel()
   {
-    StartCoroutine(TransitionToMain());
+      StartCoroutine(TransitionToMain());
   }
 
 
   public void OpenExtrasPanel()
   {
-    StartCoroutine(TransitionToExtras());
+      StartCoroutine(TransitionToExtras());
   }
 
   IEnumerator TransitionToExtras()

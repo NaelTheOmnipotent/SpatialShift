@@ -43,6 +43,8 @@ public class GameManagerScript : MonoBehaviour
         {
             Gamepad.current.SetMotorSpeeds(0,0);
         }
+        
+        
     }
 
 

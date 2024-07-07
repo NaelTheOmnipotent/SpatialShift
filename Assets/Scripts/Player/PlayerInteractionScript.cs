@@ -226,9 +226,13 @@ public class PlayerInteractionScript : MonoBehaviour
             coinCount++;
         }
         
-        else if (other.CompareTag("Checkpoint"))
+        else if (other.CompareTag("Checkpoint") && GameManagerScript.checkPointPosition != other.transform.position)
         {
             GameManagerScript.checkPointPosition = other.transform.position;
+            if (rb.velocity.magnitude > 20)
+            {
+                other.GetComponent<Animator>().Play("SignAnim");
+            }
         }
         else if (other.CompareTag("DeathPlane"))
         {
