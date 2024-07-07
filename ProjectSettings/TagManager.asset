@@ -12,6 +12,7 @@ TagManager:
   - DangerZone
   - DeathPlane
   - EnemySpawners
+  - Audio
   layers:
   - Default
   - TransparentFX

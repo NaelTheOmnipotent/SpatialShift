@@ -8,6 +8,8 @@ using UnityEngine.Rendering;
 
 public class PlayerInteractionScript : MonoBehaviour
 {
+    private AudioManager audioManager;
+    
     #region References
     
     private Rigidbody2D rb;
@@ -60,6 +62,8 @@ public class PlayerInteractionScript : MonoBehaviour
     [Header("Misc")] 
     private float hardHitOnGroundSpeed;
     [SerializeField] private GameObject destructibleGroundAnim;
+    
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -185,16 +189,18 @@ public class PlayerInteractionScript : MonoBehaviour
         {
             if (isHeadingDownwards && destructiblePlatformSpeedRequirement <= Mathf.Abs(rb.velocity.y))
             {
+                
                 var destructiblePlatformDestructionAnim = Instantiate(destructibleGroundAnim, destructiblePlatformHit.collider.gameObject.transform.position, Quaternion.identity);
                 Destroy(destructiblePlatformHit.collider.gameObject);
                 Destroy(destructiblePlatformDestructionAnim, .5f);
                 playerScript.touchedGround = true;
-
+                
                 if (Gamepad.current != null)
                 {
                     Gamepad.current.SetMotorSpeeds(.5f, .5f);
                     StartCoroutine(GamePadVibration());
                 }
+                
             }
         }
         
@@ -245,6 +251,7 @@ public class PlayerInteractionScript : MonoBehaviour
     //gets called whenever the Player gets damage
     void Damage()
     {
+        
         if (!isInvincible && !isDamaged)
         {
             isInvincible = true;
@@ -255,7 +262,6 @@ public class PlayerInteractionScript : MonoBehaviour
             {
                 rb.velocity = new Vector2(-1, 2) * reboundForce;
                 playerScript.isHit = true;
-
             }
             else if (Mathf.Sign(rb.velocity.x) < 0)
             {
@@ -272,6 +278,7 @@ public class PlayerInteractionScript : MonoBehaviour
 
     public void EnemyHit()
     {
+        
         rb.velocity = new Vector2(rb.velocity.x, ySpeed * 1.35f);
         isHittingEnemy = true;
         isHeadingDownwards = false;

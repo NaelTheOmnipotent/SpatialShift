@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
+    private AudioManager audioManager;
+    
     #region Movement Variable Declarations
 
     [Header("References")]
@@ -42,6 +44,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float resetAirSpeed;
 
     #endregion
+    
+    
 
     #region ShiftingMechanic Variable Declerations
 
@@ -71,6 +75,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         //Puts the Player at either the start of the level or the last Checkpoint
         transform.position = GameManagerScript.checkPointPosition;
     }
@@ -105,6 +110,7 @@ public class PlayerScript : MonoBehaviour
         //Jumping
         if ((inputHandler.JumpInput() || inputHandler.jumpBuffer) && (coyoteTimeCounter > 0))
         {
+            
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
             hasJumped = true;
             inputHandler.jumpBuffer = false;
@@ -113,6 +119,9 @@ public class PlayerScript : MonoBehaviour
             groundedScript.isGrounded = false;
 
             spriteRendererScript.isJumping = true;
+            
+            //play jump audio
+            audioManager.PlaySFX(audioManager.jump);
         }
 
         //Adds an additional downwards force when the jump button is released
@@ -270,6 +279,8 @@ public class PlayerScript : MonoBehaviour
         {
             if (touchedGround && !hasTeleported && isNotBlocked && shiftCountDown <= Time.time && Time.timeScale != 0)
             {
+                audioManager.PlaySFX(audioManager.shift);
+                
                 //Gets the Magnitude of the velocity
                 trueVelocity = rb.velocity.magnitude;
 
@@ -315,6 +326,8 @@ public class PlayerScript : MonoBehaviour
                 spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingSideways = true;
                 gameManager.playerIsTeleporting = false;
+                
+                audioManager.PlaySFX(audioManager.dashAterShift);
 
             }
             //Up-Right
@@ -327,6 +340,8 @@ public class PlayerScript : MonoBehaviour
                 spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingDiagonallyUp = true;
                 gameManager.playerIsTeleporting = false;
+                
+                audioManager.PlaySFX(audioManager.dashAterShift);
             }
             //Up
             if (inputHandler.ShiftingVector() == new Vector2(0, 1) && !inputHandler.isHoldingTeleport())
@@ -338,6 +353,8 @@ public class PlayerScript : MonoBehaviour
                 spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingUp = true;
                 gameManager.playerIsTeleporting = false;
+                
+                audioManager.PlaySFX(audioManager.dashAterShift);
             }
             //Up-Left
             if (inputHandler.ShiftingVector() == new Vector2(-1, 1) && !inputHandler.isHoldingTeleport())
@@ -349,6 +366,8 @@ public class PlayerScript : MonoBehaviour
                  spriteRendererScript.isShifting = false;
                  spriteRendererScript.isShiftingDiagonallyUp = true;
                  gameManager.playerIsTeleporting = false;
+                 
+                 audioManager.PlaySFX(audioManager.dashAterShift);
             }
             //Left
             if (inputHandler.ShiftingVector() == new Vector2(-1, 0) && !inputHandler.isHoldingTeleport())
@@ -360,6 +379,8 @@ public class PlayerScript : MonoBehaviour
                 spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingSideways = true;
                 gameManager.playerIsTeleporting = false;
+                
+                audioManager.PlaySFX(audioManager.dashAterShift);
             }
             //Down-Left
             if (inputHandler.ShiftingVector() == new Vector2(-1, -1) && !inputHandler.isHoldingTeleport())
@@ -371,6 +392,8 @@ public class PlayerScript : MonoBehaviour
                 spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingDiagonallyDown = true;
                 gameManager.playerIsTeleporting = false;
+                
+                audioManager.PlaySFX(audioManager.dashAterShift);
             }
             //Down
             if (inputHandler.ShiftingVector() == new Vector2(0, -1) && !inputHandler.isHoldingTeleport())
@@ -383,6 +406,8 @@ public class PlayerScript : MonoBehaviour
                 spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingDown = true;
                 gameManager.playerIsTeleporting = false;
+                
+                audioManager.PlaySFX(audioManager.dashAterShift);
             }
             //Down-Right
             if (inputHandler.ShiftingVector() == new Vector2(1, -1) && !inputHandler.isHoldingTeleport())
@@ -394,6 +419,8 @@ public class PlayerScript : MonoBehaviour
                 spriteRendererScript.isShifting = false;
                 spriteRendererScript.isShiftingDiagonallyDown = true;
                 gameManager.playerIsTeleporting = false;
+                
+                audioManager.PlaySFX(audioManager.dashAterShift);
             }
         }
     }
