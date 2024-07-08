@@ -112,6 +112,7 @@ public class SpriteRendererScript : MonoBehaviour
 
     void AnimationStuff()
     {
+        //depending on the input this will flip the character sprite
         if (inputHandler.MovementInput().x > 0 && !isFacingRight && Time.timeScale != 0)
         {
             FlipCharacter();
@@ -129,7 +130,8 @@ public class SpriteRendererScript : MonoBehaviour
         {
             animator.SetFloat("Speed", Mathf.Abs(playerScript.trueVelocity));
         }
-
+        
+        //defines the variables for the animator
         animator.SetBool("Braking", isBraking);
         animator.SetBool("Jumping", isJumping);
         animator.SetFloat("YSpeed", playerScript.rb.velocity.y);
@@ -143,6 +145,7 @@ public class SpriteRendererScript : MonoBehaviour
         animator.SetBool("Shifting", isShifting);
         animator.SetBool("Hit", GetComponentInParent<PlayerInteractionScript>().isInvincible);
 
+        //hides the cape object when the player is invincible
         if (GetComponentInParent<PlayerInteractionScript>().isInvincible)
         {
             cape.SetActive(false);
@@ -157,6 +160,7 @@ public class SpriteRendererScript : MonoBehaviour
 
     void ShiftingBools()
     {
+        //disables the shifting bools whilst the player is grounded to help with animation fluidity
         if (groundChecker.isGrounded)
         {
             isShiftingDiagonallyDown = false;
@@ -169,6 +173,7 @@ public class SpriteRendererScript : MonoBehaviour
     }
     private void FlipCharacter()
     {
+        //flips the character
         Vector3 currentScale = transform.localScale;
         
         currentScale.x *= -1;
@@ -180,6 +185,7 @@ public class SpriteRendererScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //seperate Ground Check for the Sprite Renderer
         RaycastHit2D leftGroundHit = Physics2D.Raycast(rig.transform.position + new Vector3(-0.25f, 0, 0), -Vector2.up, rayCastDistance, groundMask);
         RaycastHit2D rightGroundHit = Physics2D.Raycast(rig.transform.position + new Vector3(0.25f, 0, 0), -Vector2.up, rayCastDistance, groundMask);
 

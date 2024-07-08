@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CapeAnimationScript : MonoBehaviour
 {
+    //References
     [SerializeField] private Rigidbody2D rig;
     [SerializeField] private GroundedScript groundChecker;
     [SerializeField] private GameObject cape;
@@ -18,6 +19,7 @@ public class CapeAnimationScript : MonoBehaviour
 
     private void Start()
     {
+        //spawns the cape animation
         animator = GetComponent<Animator>();
         startingPos = transform.position;
         spriteRendererScript = GetComponentInParent<SpriteRendererScript>();
@@ -25,6 +27,7 @@ public class CapeAnimationScript : MonoBehaviour
 
     private void Update()
     {
+        //sets variables for the animator
         animator.SetFloat("XSpeed", Mathf.Abs(rig.velocity.x));
         animator.SetFloat("YSpeed", rig.velocity.y);
         animator.SetBool("IsGrounded", isGrounded);
@@ -34,6 +37,7 @@ public class CapeAnimationScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //seperate ground check for the cape animation
         RaycastHit2D leftGroundHit = Physics2D.Raycast(rig.transform.position + new Vector3(-0.25f, 0, 0), -Vector2.up, rayCastDistance, groundMask);
         RaycastHit2D rightGroundHit = Physics2D.Raycast(rig.transform.position + new Vector3(0.25f, 0, 0), -Vector2.up, rayCastDistance, groundMask);
 
@@ -49,6 +53,7 @@ public class CapeAnimationScript : MonoBehaviour
 
     private void CapePosition()
     {
+        //changes the capes position in relation to the player depending on the players current state
         if (rig.velocity.y <= -0.1 && !isGrounded)
         {
             cape.transform.localPosition = new Vector3(-0.29f, 0.12f, 0f);
@@ -68,13 +73,6 @@ public class CapeAnimationScript : MonoBehaviour
         {
             cape.transform.localPosition = new Vector3(-0.29f, 0.12f, 0f);
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(rig.transform.position + new Vector3(-0.25f, 0, 0), rig.transform.position + new Vector3(-0.25f, -rayCastDistance, 0));
-        
     }
 }
 
