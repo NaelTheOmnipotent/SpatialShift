@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 
 public class SettingsScript : MonoBehaviour
 {
+    //References
     private string fullscreenInPP = "Fullscreen";
     private int fullscreenInt = 1;
 
@@ -30,6 +31,7 @@ public class SettingsScript : MonoBehaviour
 
     public void FullScreenChange()
     {
+        //will set the game to fullscreen oder windowed
         if (fullScreenToggle.isOn)
         {
             Debug.Log(true);
@@ -44,11 +46,13 @@ public class SettingsScript : MonoBehaviour
     
     public void ChangeMasterVolume()
     {
+        //will change the mastervolume
         mainAudioMixer.SetFloat("MasterVolume", masterVol.value);
         var percentage = masterVol.value / -80;
         percentage = 1 - percentage;
         percentage *= 100;
-
+        
+        //will display the percentage
         if (percentage == 100)
         {
             masterVolumePercentage.text = percentage.ToString("000");
@@ -66,12 +70,14 @@ public class SettingsScript : MonoBehaviour
     }
     public void ChangeMusicVolume()
     {
+        //will change the musicvolume
         mainAudioMixer.SetFloat("MusicVolume", musicVol.value);
         
         var percentage = musicVol.value / -80;
         percentage = 1 - percentage;
         percentage *= 100;
 
+        // will display the percentage
         if (percentage == 100)
         {
             musicVolumePercentage.text = percentage.ToString("000");
@@ -87,12 +93,14 @@ public class SettingsScript : MonoBehaviour
     }
     public void ChangeSFXVolume()
     {
+        //will change the sfxvolume
         mainAudioMixer.SetFloat("SFXVolume", sfxVol.value);
         
         var percentage = sfxVol.value / -80;
         percentage = 1 - percentage;
         percentage *= 100;
-
+        
+        //display the percentage
         if (percentage == 100)
         {
             sfxVolumePercentage.text = percentage.ToString("000");

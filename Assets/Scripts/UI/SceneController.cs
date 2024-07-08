@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
+  //References  
   public Animator anim;
   public Animator credditsAnim;
   
@@ -36,10 +37,14 @@ public class SceneController : MonoBehaviour
   
   private void Start()
   {
+      //Extras Panel and Settings Panel will be invisible after starting the game
+      //Main Menu Panel will be visible
+    
       ShowCanvasGroup(mainMenuPanel);
       HideCanvasGroup(settingsPanel); 
       HideCanvasGroup(extrasPanel);
-
+      
+      
       if (PlayerPrefs.GetInt("BlueHedgehogAchievement") == 1)
       { 
         checkmarkBlueHedgehog.enabled = true;
@@ -56,18 +61,20 @@ public class SceneController : MonoBehaviour
       }
   }
 
+  //function for the Options Button
   public void OpenSettingsPanel()
   {
       StartCoroutine(transition());
   }
 
-   
+   //function for Back Buttons
   public void CloseSettingsPanel()
   {
       StartCoroutine(TransitionToMain());
   }
 
 
+  //function for Extras Button
   public void OpenExtrasPanel()
   {
       StartCoroutine(TransitionToExtras());
@@ -75,6 +82,8 @@ public class SceneController : MonoBehaviour
 
   IEnumerator TransitionToExtras()
   {
+    //Will trigger the background animation "isGoingToSettings"
+    //All Panels except the ExtrasPanel will be invisible
     anim.SetTrigger("isGoingToSettings");
     HideCanvasGroup(mainMenuPanel);
     HideCanvasGroup(settingsPanel);
@@ -91,6 +100,8 @@ public class SceneController : MonoBehaviour
   }
   IEnumerator transition()
   {
+    //will trigger the background transition animation
+    //will hide MainMenuPanel and show SettingsPanel
     anim.SetTrigger("isGoingToSettings");
     HideCanvasGroup(mainMenuPanel);
     yield return new WaitForSeconds(0.75f);
@@ -99,6 +110,8 @@ public class SceneController : MonoBehaviour
   }
   IEnumerator TransitionToMain()
   {
+    //will trigger the background animation from settings or extras to main menu
+    //will hide every panel except the MainMenuPanel
     anim.SetTrigger("isGoingToMain");
     HideCanvasGroup(settingsPanel);
     HideCanvasGroup(extrasPanel);
@@ -114,12 +127,14 @@ public class SceneController : MonoBehaviour
   
   public void PlayGame()
   {
+    //Level scene will be loaded
     GameManagerScript.checkPointPosition = new Vector3(-9, -1, 0);
     SceneManager.LoadScene("LevelOne");
   }
 
   public void QuitGame()
   {
+    //application will be closed
     Application.Quit();
   }
   
@@ -128,6 +143,7 @@ public class SceneController : MonoBehaviour
 
   public void OpenControls()
   {
+    //ControlPanel will be shown
     ShowCanvasGroup(controlPanel);
     ShowCanvasGroup(showControllerButton);
     ShowCanvasGroup(showKeyBoardButton);
@@ -141,18 +157,21 @@ public class SceneController : MonoBehaviour
 
   public void OpenKeyBoardControls()
   {
+    //will show the keyboard controls and hide controller controls
     ShowCanvasGroup(keyboardControlsActivated);
     HideCanvasGroup(controllerControlsActivated);
   }
 
   public void OpenControllerControls()
   {
+    //will show the controller controls and hide keyboard controls
     ShowCanvasGroup(controllerControlsActivated);
     HideCanvasGroup(keyboardControlsActivated);
   }
 
   public void OpenTips()
   {
+    //only tipsPanel will be visible
     ShowCanvasGroup(tipsPanel);
     HideCanvasGroup(controlPanel);
     HideCanvasGroup(controllerControlsActivated);
@@ -163,6 +182,7 @@ public class SceneController : MonoBehaviour
 
   public void OpenAchievements()
   {
+    //only AchievementsPanel will be visible
     ShowCanvasGroup(achievementPanel);
     HideCanvasGroup(controlPanel);
     HideCanvasGroup(controllerControlsActivated);
@@ -173,6 +193,8 @@ public class SceneController : MonoBehaviour
 
   public void OpenCredits()
   {
+    //CreditsPanel will be visible
+    //Animation for the Credits will be played
     ShowCanvasGroup(creditsPanel);
     HideCanvasGroup(controlPanel);
     HideCanvasGroup(showControllerButton);
@@ -184,6 +206,9 @@ public class SceneController : MonoBehaviour
     credditsAnim.SetTrigger("CreditsShowRoles");
   }
   
+  
+  //switch alpha of the canvas group to 1 = visible
+  //will make the canvas group interactbale 
   void ShowCanvasGroup(CanvasGroup canvasGroup)
   {
     canvasGroup.alpha = 1f;
@@ -192,6 +217,8 @@ public class SceneController : MonoBehaviour
   }
 
   
+  //switch alpha of the canvas group to 0 = invisible 
+  //user cant interact with the canvas group
   void HideCanvasGroup(CanvasGroup canvasGroup)
   {
     canvasGroup.alpha = 0f;
