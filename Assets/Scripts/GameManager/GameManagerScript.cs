@@ -134,6 +134,7 @@ public class GameManagerScript : MonoBehaviour
         currentTime = 0;
         minutes = 0;
         
+        audioManager.Stop("Music");
         //Resets the Gamepad Rumble just in case
         if (Gamepad.current != null)
         {
