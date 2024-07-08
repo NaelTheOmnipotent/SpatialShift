@@ -8,6 +8,7 @@ public class UIControllerScript : MonoBehaviour
     [SerializeField] private CanvasGroup pauseMenuCanvasGroup;
     [SerializeField] private CanvasGroup leaderboardCanvasGroup;
     [SerializeField] private InputHandlerScript inputHandler;
+    [SerializeField] private CanvasGroup extrasPanel;
     
     private void Start()
     {
@@ -15,6 +16,7 @@ public class UIControllerScript : MonoBehaviour
         hudCanvasGroup.ShowCanvasGroup();
         pauseMenuCanvasGroup.HideCanvasGroup();
         leaderboardCanvasGroup.HideCanvasGroup();
+        extrasPanel.HideCanvasGroup();
     }
 
     private void Update()
@@ -36,6 +38,8 @@ public class UIControllerScript : MonoBehaviour
         }
         
     }
+
+   
 }
 
 //a public static class can be accessed from everywhere and can only contain static Methods

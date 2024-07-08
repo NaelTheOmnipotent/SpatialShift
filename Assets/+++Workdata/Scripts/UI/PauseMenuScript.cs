@@ -9,6 +9,7 @@ public class PauseMenuScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI countDownText;
     [SerializeField] private CanvasGroup pauseMenuCanvasGroup;
     [SerializeField] private GameManagerScript gameManager;
+    [SerializeField] private CanvasGroup extrasPanel;
 
     //When the player presses the Continue Button
     public void ContinueButton()
@@ -37,6 +38,17 @@ public class PauseMenuScript : MonoBehaviour
     {
         //Cals the BackToMainMenu Method
         gameManager.BackToMainMenu();
+    }
+    
+    public void OpenExtras()
+    {
+        pauseMenuCanvasGroup.HideCanvasGroup();
+        extrasPanel.ShowCanvasGroup();
+    }
+    public void BackToPause()
+    {
+        pauseMenuCanvasGroup.ShowCanvasGroup();
+        extrasPanel.HideCanvasGroup();
     }
 
     //The Countdown for when the player Closes the Pause Menu and adds Controller Rumble
