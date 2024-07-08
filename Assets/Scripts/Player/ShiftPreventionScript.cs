@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class ShiftPreventionScript : MonoBehaviour
 {
+    //References and Variables
     [SerializeField] List<Collider2D> colList = new();
     private PlayerScript playerScript;
     private void Start()
     {
+        //Gets the PlayerScript and teleports the ShiftPrevention to the Shift Destination 
         playerScript = GetComponentInParent<PlayerScript>();
         transform.position = new Vector3(transform.position.x, transform.position.y + playerScript.shiftHeight);
         playerScript.isNotBlocked = true;

@@ -1,14 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
 {
+    //References
     [SerializeField] private TextMeshProUGUI countDownText;
     [SerializeField] private CanvasGroup pauseMenuCanvasGroup;
     [SerializeField] private GameManagerScript gameManager;
@@ -38,10 +35,11 @@ public class PauseMenuScript : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        //Cals the BackToMainMenu Method
         gameManager.BackToMainMenu();
     }
 
-    //The Countdown for when the player Closes the Pause Menu
+    //The Countdown for when the player Closes the Pause Menu and adds Controller Rumble
     IEnumerator CountDown()
     {
         countDownText.text = "3";
@@ -63,6 +61,7 @@ public class PauseMenuScript : MonoBehaviour
 
     IEnumerator ControllerRumble(float rumbleStrength, float length)
     {
+        //Gets the MotorSpeed passed down and if the Controller isn't null sets the MotorSpeed to it
         if (Gamepad.current != null)
         {
             Gamepad.current.SetMotorSpeeds(rumbleStrength, rumbleStrength);

@@ -68,3 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6f67603d8874641b7735495d174d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeAsScore: 0
+  startOfLevel: {x: 0, y: 0}
+  endOfLevel: {x: 1000, y: 0}
+  player: {fileID: 0}
+  achievementAnimator: {fileID: 0}
+  achievementText: {fileID: 0}

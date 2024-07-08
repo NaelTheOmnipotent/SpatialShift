@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class JumpingEnemy : MonoBehaviour
 {
+    //References
     private Rigidbody2D rb;
     private Animator animator;
     [HideInInspector] public bool playerHasJumped;
@@ -15,17 +12,23 @@ public class JumpingEnemy : MonoBehaviour
 
     private void Awake()
     {
+        //Gets the components
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
     
     private void FixedUpdate()
     {
+        //Makes the Enemy Jump when the player has jumped
         if (playerHasJumped && rb.velocity.y == 0) 
         { 
             rb.velocity = Vector2.up * jumpForce;
+            
+            //Plays the enemyJump Sfx
+            FindObjectOfType<AudioManager>().Play("EnemyJump");
         }
 
+        //Sets animation stuff
         if (rb.velocity.y != 0)
         {
             animator.SetBool("Jumping", true);
@@ -37,6 +40,7 @@ public class JumpingEnemy : MonoBehaviour
         animator.SetFloat("YSpeed", rb.velocity.y);
     }
 
+    //turns the enemy
     public void FacingRight()
     {
         Vector3 currentScale = transform.localScale;
@@ -46,6 +50,7 @@ public class JumpingEnemy : MonoBehaviour
         transform.localScale = currentScale;
     }
 
+    //turns the enemy
     public void FacingLeft()
     {
         Vector3 currentScale = transform.localScale;
@@ -54,9 +59,10 @@ public class JumpingEnemy : MonoBehaviour
 
         transform.localScale = currentScale;
     }
-
+    
     private void OnDestroy()
     {
+        //Spawns death animation and rotates it the right way
         if (jumpingDeathAnim != null)
         {
             var spawnedDeathAnim = Instantiate(jumpingDeathAnim, transform.position, Quaternion.identity);

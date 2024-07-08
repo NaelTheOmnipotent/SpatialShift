@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class HUDScript : MonoBehaviour
 {
+    //References
     [SerializeField] private PlayerScript playerScript;
-    [SerializeField] private MomentumWheelScript momentumWheelScript;
-    private PlayerInteractionScript playerInteraction;
-    
     [SerializeField] private TextMeshProUGUI timerText;
-    
     [SerializeField] private Rigidbody2D needle;
+    
+    //Variables for Timer
     [HideInInspector] public int minutes;
     [HideInInspector] public int seconds;
     [HideInInspector] public float milliSeconds;
@@ -17,15 +16,17 @@ public class HUDScript : MonoBehaviour
     
     private void Start()
     {
-        playerInteraction = playerScript.gameObject.GetComponent<PlayerInteractionScript>();
+        //Gets the minutes stored in the static int
         minutes = GameManagerScript.minutes;
     }
 
     private void Update()
     {
+        //Rotates the Needle around the tachometer
         var needleRotationTarget = 120 + -playerScript.rb.velocity.magnitude * 4;
         needle.rotation = Mathf.Lerp(needle.rotation, needleRotationTarget, Time.deltaTime * 5);
         
+        //Calls the TimerText Method
         TimerText();
     }
 

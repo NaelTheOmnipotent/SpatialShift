@@ -7,6 +7,7 @@ public class CameraRoomScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            //If the player enters the trigger, activate the camera
             virtualCam.SetActive(true);
         }
     }
@@ -14,6 +15,7 @@ public class CameraRoomScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            //If the Player exits the trigger, deactivate the camera
             virtualCam.SetActive(false);
         }
     }

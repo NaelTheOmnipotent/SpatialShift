@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GroundedScript : MonoBehaviour
 {
+    //Variables
     [HideInInspector] public bool isGrounded;
     [SerializeField] List<Collider2D> colList = new();
     private void OnTriggerEnter2D(Collider2D other)

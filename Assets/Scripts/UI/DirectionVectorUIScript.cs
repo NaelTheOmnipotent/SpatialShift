@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class DirectionVectorUIScript : MonoBehaviour
 {
+    //References
     private PlayerScript playerScript;
     private InputHandlerScript inputHandler;
 
@@ -19,9 +20,11 @@ public class DirectionVectorUIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Gets Components
         playerScript = GetComponentInParent<PlayerScript>();
         inputHandler = GetComponentInParent<InputHandlerScript>();
         
+        //Disables all Arrows
         directionDown.enabled = false;
         directionLeft.enabled = false;
         directionRight.enabled = false;
@@ -35,6 +38,7 @@ public class DirectionVectorUIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //When the Player is Shifting
         if (playerScript.hasTeleported)
         {
             //Right

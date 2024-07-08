@@ -1,10 +1,10 @@
-using System;
 using UnityEngine;
 
 public class SpriteRendererScript : MonoBehaviour
 {
     #region References
 
+    //References
     private PlayerScript playerScript;
     private Animator animator;
     [SerializeField] private GroundedScript groundChecker;
@@ -15,6 +15,7 @@ public class SpriteRendererScript : MonoBehaviour
 
     #region Squashing
 
+    //Variables for Squashing
     [SerializeField] private float squashAmount;
     private Vector2 originalScale;
     private Vector2 scale;
@@ -24,12 +25,13 @@ public class SpriteRendererScript : MonoBehaviour
 
     #region Animation
 
+    //References for Animation
     [SerializeField] private GameObject cape;
     [SerializeField] private Rigidbody2D rig;
-    
     [SerializeField] private float rayCastDistance;
     [SerializeField] private LayerMask groundMask;
     
+    //Animation Variables
     [HideInInspector] public bool isBraking;
     [HideInInspector] public bool isShiftingDown;
     [HideInInspector] public bool isShiftingUp;
@@ -39,6 +41,7 @@ public class SpriteRendererScript : MonoBehaviour
     [HideInInspector] public bool isShifting;
     [HideInInspector] public bool isJumping;
     
+    //variables
     private bool isFacingRight = true;
     private bool isGrounded;
     private Vector3 startingPos;
@@ -47,6 +50,7 @@ public class SpriteRendererScript : MonoBehaviour
 
     private void Awake()
     {
+        //Gets all the components
         playerScript = GetComponentInParent<PlayerScript>();
         renderer = GetComponent<SpriteRenderer>();
         inputHandler = GetComponentInParent<InputHandlerScript>();
@@ -57,12 +61,16 @@ public class SpriteRendererScript : MonoBehaviour
 
     private void Update()
     {
+        //Calls  the ScaleOnAirTime Method
         CalculateScaleOnAirTime();
         
+        //Calls ApplyScale Method
         ApplyScale();
         
+        //Calls the Animation Method
         AnimationStuff();
         
+        //Calls the ShiftingBools Method
         ShiftingBools();
     }
 
@@ -71,17 +79,19 @@ public class SpriteRendererScript : MonoBehaviour
         // If isn't grounded, calculates how much the player is scaled on the x-axis and the additional y-axis
         if (!groundChecker.isGrounded && isFacingRight)
         {
-            
+            //An arbitrary calculation that makes the Sprite stretch out the faster the player moves on the y axis
             scale.x = originalScale.x - Mathf.Abs(playerScript.rb.velocity.y) / squashAmount;
             additionalScale.y = originalScale.x - scale.x;
         }
         else if (!groundChecker.isGrounded && !isFacingRight)
         {
+            //An arbitrary calculation that makes the Sprite stretch out the faster the player moves on the y axis
             scale.x = originalScale.x + Mathf.Abs(playerScript.rb.velocity.y) / squashAmount;
             additionalScale.y = scale.x - originalScale.x;
         }
         else
         {
+            //Applies the original scale when grounded
             scale = originalScale;
         }
     }
@@ -95,21 +105,13 @@ public class SpriteRendererScript : MonoBehaviour
         }
         else
         {
+            //Applies the original Scale
             transform.localScale = originalScale;
         }
     }
 
     void AnimationStuff()
     {
-        if (playerScript.hasTeleported)
-        {
-            //animator.enabled = false;
-        }
-        else
-        {
-            //animator.enabled = true;
-        }
-        
         if (inputHandler.MovementInput().x > 0 && !isFacingRight && Time.timeScale != 0)
         {
             FlipCharacter();

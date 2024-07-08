@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HorizontalEnemySpawnerScript : MonoBehaviour
 {
+    //References
     [SerializeField] private GameObject enemy;
     private GameObject spawnedEnemy;
 
@@ -16,12 +17,14 @@ public class HorizontalEnemySpawnerScript : MonoBehaviour
 
     private void Start()
     {
+        //The point where the enemy turns around again
         pointA = new Vector2(transform.position.x + transform.localScale.x / 2, transform.position.y);
         pointB = new Vector2(transform.position.x - transform.localScale.x / 2, transform.position.y);
     }
 
     private void OnBecameVisible()
     {
+        //When the spawner is on screen, spawn the enemy
         spawnedEnemy = Instantiate(enemy, transform.position, Quaternion.identity);
         spawnedEnemy.GetComponent<HorizontalEnemyScript>().speed = speed;
         
@@ -37,6 +40,7 @@ public class HorizontalEnemySpawnerScript : MonoBehaviour
 
     private void OnBecameInvisible()
     {
+        //Destroy the enemy
         Destroy(spawnedEnemy);
     }
 
@@ -44,6 +48,7 @@ public class HorizontalEnemySpawnerScript : MonoBehaviour
     {
         if (spawnedEnemy != null)
         {
+            //Turns the enemy around when it reaches the end point
             if (spawnedEnemy.transform.position.x > pointA.x)
             {
                 if (Mathf.Sign(spawnedEnemy.GetComponent<HorizontalEnemyScript>().speed) > 0)
@@ -51,6 +56,7 @@ public class HorizontalEnemySpawnerScript : MonoBehaviour
                     spawnedEnemy.GetComponent<HorizontalEnemyScript>().speed *= -1;
                 }
             }
+            //Turns the enemy around when it reaches the end point
             else if (spawnedEnemy.transform.position.x < pointB.x)
             {
                 if (Mathf.Sign(spawnedEnemy.GetComponent<HorizontalEnemyScript>().speed) < 0)
@@ -63,6 +69,7 @@ public class HorizontalEnemySpawnerScript : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        //Gizmos for easier level designing
         Gizmos.DrawWireCube(transform.position, transform.lossyScale);
         Gizmos.DrawWireSphere(pointA,.1f);
         Gizmos.DrawWireSphere(pointB,.1f);

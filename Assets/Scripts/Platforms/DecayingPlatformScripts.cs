@@ -10,6 +10,7 @@ public class DecayingPlatformScripts : MonoBehaviour
 
     private void Start()
     {
+        //Calculates the topmost point of the platform
         topOfPlatform = new Vector2(transform.position.x, transform.position.y + transform.lossyScale.y / 2);
     }
 
@@ -17,6 +18,7 @@ public class DecayingPlatformScripts : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            //If the player is above that but is touching the platform it dissapears after time
             var playerFeetPos = new Vector2(other.transform.position.x, other.transform.position.y - other.transform.lossyScale.y / 2);
             if (playerFeetPos.y >= topOfPlatform.y)
             {

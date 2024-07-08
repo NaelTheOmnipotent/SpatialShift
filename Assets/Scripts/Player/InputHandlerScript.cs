@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class InputHandlerScript : MonoBehaviour
 {
+    //References
     PlayerInput playerInput;
     Rigidbody2D rb;
 
+    //Variables
     [HideInInspector] public bool jumped;
     [HideInInspector] public bool jumpBuffer;
     [HideInInspector] public bool jumpHeld;
@@ -14,11 +16,13 @@ public class InputHandlerScript : MonoBehaviour
     #region First Frames
     private void Awake()
     {
+        //Adds the PlayerInput
         playerInput = new PlayerInput();
     }
 
     private void OnEnable()
     {
+        //Enables it
         playerInput.Enable();
 
         //Subscribes to the Jump Events
@@ -26,16 +30,18 @@ public class InputHandlerScript : MonoBehaviour
         playerInput.BasicMovement.Jump.performed += JumpHeld;
         playerInput.BasicMovement.Jump.canceled += JumpCancled;
     }
+    private void OnDisable()
+    {
+        //Disables it
+        playerInput.Disable();
+    }
 
     private void Start()
     {
+        //Reference to RigidBody
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnDisable()
-    {
-        playerInput.Disable();
-    }
 
     #endregion
 

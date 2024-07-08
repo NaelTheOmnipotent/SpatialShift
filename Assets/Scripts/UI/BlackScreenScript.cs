@@ -1,46 +1,43 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class BlackScreenScript : MonoBehaviour
 {
+    //References
     private CanvasGroup blackScreen;
     private bool isFadingIn;
-    [HideInInspector] public bool isFadingOut;
 
     private void Awake()
     {
+        //Gets the Blackscreen and sets it to 1
         blackScreen = GetComponent<CanvasGroup>();
         blackScreen.alpha = 1;
-        
-        //isFadingIn = true;
     }
 
     private void Start()
     {
+        //Starts the BlackScreenFadeOut Coroutine
         StartCoroutine(BlackScreenFadeOutDelay());
     }
 
     private void Update()
     {
+        //Fades out the BlackScreen
         if (blackScreen.alpha != 0 && isFadingIn)
         {
             blackScreen.alpha -= Time.deltaTime;
         }
         else
         {
+            //Turns of FadeIn
             isFadingIn = false;
-        }
-
-        if (blackScreen.alpha <= 0 && isFadingOut)
-        {
-            blackScreen.alpha += Time.deltaTime;
         }
     }
 
     private IEnumerator BlackScreenFadeOutDelay()
     {
-        yield return new WaitForSecondsRealtime(.2f);
+        //BlackScreen fadeInDelay
+        yield return new WaitForSecondsRealtime(.3f);
         isFadingIn = true;
     }
 }

@@ -6,6 +6,7 @@ public class TimerStartScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            //Starts the timer
             GameManagerScript.timerIsRunning = true;
         }
     }
